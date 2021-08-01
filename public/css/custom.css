@@ -1,0 +1,58 @@
+.whatsapp {
+  background-color: #25d366;
+}
+
+.shopee {
+  background-color: #ee4d2d;
+}
+
+#contact img {
+  width: 40px;
+}
+
+.unggulan {
+  background-color: #c4cdff;
+  border-radius: 10px;
+}
+
+.svg-bg-top {
+  background: url('/img/wavetop.svg') center top no-repeat;
+  background-size: cover;
+  height: 250px;  
+}
+
+.ribbon {
+  color: white;
+  width: auto;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 15px;
+  position: absolute;
+  left: -8px;
+  top: 20px;
+  background: #fc0000;
+}
+.ribbon:before, .ribbon:after {
+  content: "";
+  position: absolute;
+}
+.ribbon:before {
+  height: 0;
+  width: 0;
+  top: -8.5px;
+  left: 0.1px;
+  border-bottom: 9px solid #fc0000;
+  border-left: 9px solid transparent;
+}
+.ribbon:after {
+  height: 0;
+  width: 0;
+  right: -14.5px;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 14.5px solid #fc0000;
+}
+
+.nonribbon {
+  display: none;
+}
