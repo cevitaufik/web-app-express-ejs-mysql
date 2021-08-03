@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/littlefx/dev.little-f.xyz/
+    - /bin/cp -R images $DEPLOYPATH
