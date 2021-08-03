@@ -2,4 +2,9 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/littlefx/littlef-node/
-    - /bin/cp -R images $DEPLOYPATH
+    - /bin/cp -R public $DEPLOYPATH
+    - /bin/cp -R util $DEPLOYPATH
+    - /bin/cp -R views $DEPLOYPATH
+    - /bin/cp app.js $DEPLOYPATH
+    - /bin/cp package-lock.json $DEPLOYPATH
+    - /bin/cp package.json $DEPLOYPATH
