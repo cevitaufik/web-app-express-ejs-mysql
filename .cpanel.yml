@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/littlefx/dev.little-f.xyz/
+    - export DEPLOYPATH=/home/littlefx/littlef-node/
     - /bin/cp -R images $DEPLOYPATH
