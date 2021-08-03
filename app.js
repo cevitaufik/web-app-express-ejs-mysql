@@ -1,10 +1,11 @@
 const express = require('express');
+const expressLayouts = require('express-ejs-layouts');
+const routes = require('./util/routes');
 const path = require('path');
-const multer = require('multer');
-const con = require('./db_config');
 
 const app = express();
 
+app.use(expressLayouts);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended: false}));
 app.set('view engine', 'ejs');
@@ -15,28 +16,10 @@ const init = () => {
   console.log(`server berjalan pada http://localhost:${host}`);
 };
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'public/uploads');
-  },
-  filename: (req, file, cb) => {
-    cb(null, file.fieldname + '_' + Date.now() +
-    path.extname(file.originalname));
-  },
-});
+app.get('/', routes.home);
 
-const upload = multer({storage: storage});
-const uploadMultiple = upload.fields([
-  {name: 'file1', maxCount: 10},
-  {name: 'file2', maxCount: 10},
-]);
+app.get('/add', routes.add);
 
-app.get('/', (req, res) => {
-  con.query( 'SELECT * FROM products; SELECT * FROM owner',
-      (err, results) => {
-        res.render('index.ejs', {db: results});
-      },
-  );
-});
+app.post('/add', routes.uploadMultiple, routes.addNewProduct);
 
 init();

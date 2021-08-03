@@ -2,12 +2,35 @@
   background-color: #25d366;
 }
 
+.whatsapp-logo {
+  font-size: 25px;
+  line-height: 30px;
+  text-align: center;
+  float: right;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background-color: #25d366;
+  padding: 10px 12.5px;
+  border-radius: 25px;
+  color: white;
+}
+
+.whatsapp-logo a {
+  color: white;
+}
+
 .shopee {
   background-color: #ee4d2d;
 }
 
-#contact img {
-  width: 40px;
+.social-img {
+  width: 30px;
+}
+
+.social {
+  line-height: 30px;
+  padding-left: 35px;
 }
 
 .unggulan {
@@ -55,4 +78,8 @@
 
 .nonribbon {
   display: none;
+}
+
+.about {
+  text-align: center;
 }
