@@ -59,12 +59,12 @@ const toArray = (data) => {
 
 // formating input user. product name
 const uppercase = (data) => data.toUpperCase().slice(0, 1) + data.slice(1);
-const productName = '[' + '"' + fileName[0] + '"' + ',' +
- '"' + fileName[1] + '"' + ',' + '"' + fileName[2] + '"' + ']';
 
 
 // add new product
 exports.addNewProduct = (req, res) => {
+  const productName = '[' + '"' + fileName[0] + '"' + ',' +
+   '"' + fileName[1] + '"' + ',' + '"' + fileName[2] + '"' + ']';
   con.query(
       `INSERT INTO products (
           code,
