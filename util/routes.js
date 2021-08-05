@@ -50,18 +50,21 @@ exports.uploadMultiple = upload.fields([
   {name: 'foto3', maxCount: 10},
 ]);
 
+// formating input user like array
+const toArray = (data) => {
+  const str = data.replace(/,/g, '","');
+  const desc = '["' + str + '"]';
+  return desc;
+};
+
+// formating input user. product name
+const uppercase = (data) => data.toUpperCase().slice(0, 1) + data.slice(1);
+const productName = '[' + '"' + fileName[0] + '"' + ',' +
+ '"' + fileName[1] + '"' + ',' + '"' + fileName[2] + '"' + ']';
+
+
 // add new product
 exports.addNewProduct = (req, res) => {
-  const uppercase = (data) => data.toUpperCase().slice(0, 1) + data.slice(1);
-  const productName = '[' + '"' + fileName[0] + '"' + ',' +
-   '"' + fileName[1] + '"' + ',' + '"' + fileName[2] + '"' + ']';
-
-  const toArray = (data) => {
-    const str = data.replace(/,/g, '","');
-    const desc = '["' + str + '"]';
-    return desc;
-  };
-
   con.query(
       `INSERT INTO products (
           code,
@@ -85,13 +88,68 @@ exports.addNewProduct = (req, res) => {
         req.body.shopee,
         req.body.tokopedia,
       ],
-      (error, results) => {
+      (err, results) => {
         res.redirect('/add');
-        if (error != 'null') {
+        if (err != 'null') {
           console.log('data berhasil disimpan');
         } else {
-          console.log(error);
+          console.log(err);
         }
+      },
+  );
+};
+
+// update product, get data
+exports.update = (req, res) => {
+  con.query(
+      'SELECT * FROM products WHERE id=?',
+      req.params.id,
+      (err, product) => {
+        res.render('update', {
+          layout: 'main-layout',
+          tittle: 'Perbaharui produk | Little-f',
+          product,
+        });
+      });
+};
+
+exports.updateById = (req, res) => {
+  con.query(
+      `UPDATE products SET 
+      name = ?,
+      price = ?,
+      category = ?,
+      description = ?,
+      bestProduct = ?,
+      shopee = ?,
+      tokopedia = ?
+      WHERE id = ?`,
+      [
+        uppercase(req.body.name),
+        req.body.price,
+        req.body.category,
+        toArray(req.body.description),
+        req.body.bestProduct,
+        req.body.shopee,
+        req.body.tokopedia,
+        req.body.id,
+      ],
+      (err, results) => {
+        res.redirect('/');
+        console.log(err);
+        console.log(results);
+      },
+  );
+};
+
+exports.deleteById = (req, res) => {
+  con.query(
+      'DELETE FROM products WHERE id = ?',
+      [req.params.id],
+      (err, results) => {
+        res.redirect('/');
+        console.log(err);
+        console.log(results);
       },
   );
 };

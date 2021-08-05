@@ -36,15 +36,18 @@
 
 <div class="container mb-5">
 
-  <!-- produk unggulan -->
+  <!-- produk unggulan -->  
   <div class="container shadow p-4 unggulan mb-5" id="unggulan">
     <h4 class="text-center p-3">Produk unggulan kami :</h4>
     <div class="row justify-content-center">
 
       <!-- looping produk unggulan -->
       <% let bestProducts = products.filter(p => p.bestProduct.toUpperCase() == 'Y') %>
+      <% if (bestProducts.length == 0) { %>
+       <h5 class="text-center mt-5 mb-5">Belum ada produk</h5>
+      <% } %>
       <% bestProducts.forEach(product => { %>
-        <% const img = JSON.parse(product.image) %> 
+        <% const img = JSON.parse(product.image) %>
         <div class="col-md-4 mb-3">
           <div class="card h-100 mb-4 rounded-end" data-aos="fade-up" data-aos-delay="100">
             <!-- menambahkan class ribbon untuk unggulan -->
@@ -57,6 +60,30 @@
               <h5 class="card-title text-success"><%= priceForm(product.price) %></h5>
             </div>
             <div class="text-center mt-3 card-footer bg-white border-0">
+
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-danger mt-2" data-bs-toggle="modal" data-bs-target="#delete<%= product.code %>">
+                Hapus
+              </button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="delete<%= product.code %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content shadow">
+                    <div class="modal-body">
+                      <h5>Apakah anda yakin?</h5>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <form action="/delete/<%= product.id %>" method="post">
+                        <button type="submit" value="<%= product.id %>" class="btn btn-danger">Hapus</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <a href="/update/<%= product.id %>" class="btn btn-warning mt-2">Perbaharui</a>
               <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#<%= product.code %>">
                 Detail produk
               </button>
@@ -108,6 +135,30 @@
                         <h5><%= desc[i] %></h5>
                       <% } %>
                       <div class="modal-footer">
+
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-danger mt-2" data-bs-toggle="modal" data-bs-target="#delete2<%= product.code %>">
+                          Hapus
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="delete2<%= product.code %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content shadow">
+                              <div class="modal-body">
+                                <h5>Apakah anda yakin?</h5>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <form action="/delete/<%= product.id %>" method="post">
+                                  <button type="submit" value="<%= product.id %>" class="btn btn-danger">Hapus</button>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <a href="/update/<%= product.id %>" class="btn btn-warning mt-2">Perbaharui</a>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <a href="<%= product.shopee %> " class="btn text-white mt-2 shopee" role="button" target="blank">Order lewat Shopee</a>
                         <a href="https://api.whatsapp.com/send?phone=<%= owner[0].whatsapp %>&text=Apakah%20&quot;<%= product.name.replace('\s', '%20') %>&quot;%20masih%20ada?" class="btn mt-2 whatsapp text-white" role="button" target="blank">
@@ -141,6 +192,9 @@
       </div>
 
       <div class="row justify-content-center">
+        <% if (products.length == 0) { %>
+          <h5 class="text-center mt-5 mb-5">Belum ada produk</h5>
+         <% } %>
         <% products.forEach(product => { %>
           <% const img = JSON.parse(product.image) %> 
           <div class="col-md-4 mb-3">
@@ -155,6 +209,30 @@
                 <h5 class="card-title text-success"><%= priceForm(product.price) %></h5>
               </div>
               <div class="text-center mt-3 card-footer bg-white border-0">
+                
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-danger mt-2" data-bs-toggle="modal" data-bs-target="#delete<%= product.code %>">
+                  Hapus
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="delete<%= product.code %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content shadow">
+                      <div class="modal-body">
+                        <h5>Apakah anda yakin?</h5>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <form action="/delete/<%= product.id %>" method="post">
+                          <button type="submit" value="<%= product.id %>" class="btn btn-danger">Hapus</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <a href="/update/<%= product.id %>" class="btn btn-warning mt-2">Perbaharui</a>
                 <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#<%= product.code %>">
                   Detail produk
                 </button>
@@ -206,6 +284,30 @@
                           <h5><%= desc[i] %></h5>
                         <% } %>
                         <div class="modal-footer">
+
+                          <!-- Button trigger modal -->
+                          <button type="button" class="btn btn-danger mt-2" data-bs-toggle="modal" data-bs-target="#delete2<%= product.code %>">
+                            Hapus
+                          </button>
+
+                          <!-- Modal -->
+                          <div class="modal fade" id="delete2<%= product.code %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content shadow">
+                                <div class="modal-body">
+                                  <h5>Apakah anda yakin?</h5>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                  <form action="/delete/<%= product.id %>" method="post">
+                                    <button type="submit" value="<%= product.id %>" class="btn btn-danger">Hapus</button>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <a href="/update/<%= product.id %>" class="btn btn-warning mt-2">Perbaharui</a>
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                           <a href="<%= product.shopee %> " class="btn text-white mt-2 shopee" role="button" target="blank">Order lewat Shopee</a>
                           <a href="https://api.whatsapp.com/send?phone=<%= owner[0].whatsapp %>&text=Apakah%20&quot;<%= product.name.replace(/\s/g, '%20') %>&quot;%20masih%20ada?" class="btn mt-2 whatsapp text-white" role="button" target="blank">
