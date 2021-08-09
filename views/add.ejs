@@ -1,77 +1,85 @@
 <div class="container-md pt-5">
-  <h4 class="text-center mb-4">Tambahkan produk baru</h4>
-  <form action="/add" method="POST" enctype="multipart/form-data">
-    <div class="row mb-3">
-      <label for="name" class="col-sm-3 col-form-label">Nama barang</label>
-      <div class="col-sm-9">
-        <input type="text" class="form-control" id="name" name="name" required>
-      </div>
-    </div>
-    <div class="row mb-3">
-      <label for="price" class="col-sm-3 col-form-label">Harga</label>
-      <div class="col-sm-9">
-        <input type="text" class="form-control" id="price" name="price" required>
-      </div>
-    </div>
-    <div class="row mb-3">
-      <label for="category" class="col-sm-3 col-form-label">Kategori</label>
-      <div class="col-sm-9">
-        <input type="text" class="form-control" id="category" name="category" required>
-      </div>
-    </div>
-    <div class="row mb-3">
-      <label for="description" class="col-sm-3 col-form-label">Deskripsi</label>
-      <div class="col-sm-9">
-        <input type="text" class="form-control" id="description" name="description" required>
-      </div>
-    </div>
-    <div class="row mb-3">
-      <label for="shopee" class="col-sm-3 col-form-label">Shopee</label>
-      <div class="col-sm-9">
-        <input type="text" class="form-control" id="shopee" name="shopee">
-      </div>
-    </div>
-    <div class="row mb-3">
-      <label for="tokopedia" class="col-sm-3 col-form-label">Tokopedia</label>
-      <div class="col-sm-9">
-        <input type="text" class="form-control" id="tokopedia" name="tokopedia">
-      </div>
-    </div>
-    <div class="row mb-3">
-      <label for="produkUnggulan" class="col-sm-3 col-form-label">Produk unggulan</label>
-      <div class="col-sm-3">
-        <input class="form-check-input" type="radio" id="bestProduct" value="Y" name="bestProduct">
-        <label class="form-check-label" for="Y">
-          Ya
-        </label>
-        <div class="ms-5 d-inline-block">
-          <input class="form-check-input" type="radio" id="bestProduct" value="N" checked name="bestProduct">
-          <label class="form-check-label" for="N">
-            Tidak
-          </label>
+    <% if (locals.isLoggedIn) { %>
+    <h4 class="text-center mb-4">Tambahkan produk baru</h4>
+    <form action="/add" method="POST" enctype="multipart/form-data">
+      <div class="row mb-3">
+        <label for="name" class="col-sm-3 col-form-label">Nama barang</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="name" name="name" required>
         </div>
       </div>
-    </div>
-    <div class="row mb-3">
-      <label for="foto1" class="col-sm-3 col-form-label">Foto cover</label>
-      <div class="col-sm-9">
-        <input type="file" class="form-control" id="foto1" name="foto1">
+      <div class="row mb-3">
+        <label for="price" class="col-sm-3 col-form-label">Harga</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="price" name="price" required>
+        </div>
       </div>
-    </div>
-    <div class="row mb-3">
-      <label for="foto2" class="col-sm-3 col-form-label">Foto ke 2</label>
-      <div class="col-sm-9">
-        <input type="file" class="form-control" id="foto1" name="foto2">
+      <div class="row mb-3">
+        <label for="category" class="col-sm-3 col-form-label">Kategori</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="category" name="category" required>
+        </div>
       </div>
-    </div>
-    <div class="row mb-3">
-      <label for="foto3" class="col-sm-3 col-form-label">Foto ke 3</label>
-      <div class="col-sm-9">
-        <input type="file" class="form-control" id="foto1" name="foto3">
+      <div class="row mb-3">
+        <label for="description" class="col-sm-3 col-form-label">Deskripsi</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="description" name="description" required>
+        </div>
       </div>
+      <div class="row mb-3">
+        <label for="shopee" class="col-sm-3 col-form-label">Shopee</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="shopee" name="shopee">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="tokopedia" class="col-sm-3 col-form-label">Tokopedia</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="tokopedia" name="tokopedia">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="produkUnggulan" class="col-sm-3 col-form-label">Produk unggulan</label>
+        <div class="col-sm-3">
+          <input class="form-check-input" type="radio" id="bestProduct" value="Y" name="bestProduct">
+          <label class="form-check-label" for="Y">
+            Ya
+          </label>
+          <div class="ms-5 d-inline-block">
+            <input class="form-check-input" type="radio" id="bestProduct" value="N" checked name="bestProduct">
+            <label class="form-check-label" for="N">
+              Tidak
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="foto1" class="col-sm-3 col-form-label">Foto cover</label>
+        <div class="col-sm-9">
+          <input type="file" class="form-control" id="foto1" name="foto1">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="foto2" class="col-sm-3 col-form-label">Foto ke 2</label>
+        <div class="col-sm-9">
+          <input type="file" class="form-control" id="foto1" name="foto2">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="foto3" class="col-sm-3 col-form-label">Foto ke 3</label>
+        <div class="col-sm-9">
+          <input type="file" class="form-control" id="foto1" name="foto3">
+        </div>
+      </div>
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <button type="submit" class="btn btn-primary">Simpan</button>
+      </div>
+    </form>
+    <div class="logout">
+      <a href="/logout" class="text-decoration-none d-block bg-danger mt-2 rounded-pill ps-2 pe-2 shadow">Logout</a>
     </div>
-    <div class="d-grid gap-2 col-6 mx-auto">
-      <button type="submit" class="btn btn-primary">Simpan</button>
-    </div>
-  </form>
+    <% } else { %>
+      <h1 class="text-center mt-5 pt-5 mb-5 pb-5">Silahkan login terlebih dahulu</h1>
+    <% } %>
 </div>
+
