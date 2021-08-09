@@ -15,21 +15,56 @@ exports.home = (req, res) => {
   );
 };
 
+exports.login = (req, res) => {
+  res.render('login', {
+    layout: 'main-layout',
+    tittle: 'Login | Little-f',
+  });
+};
+
+exports.auth = (req, res) => {
+  con.query(
+      'SELECT * FROM user WHERE email = ?',
+      [req.body.email],
+      (err, results) => {
+        if (results.length > 0) {
+          if (req.body.password === results[0].password) {
+            req.session.userId = results[0].id;
+            req.session.username = results[0].username;
+            res.redirect('/');
+          } else {
+            res.redirect('/login');
+          }
+        } else {
+          res.redirect('/login');
+        }
+      },
+  );
+};
+
+exports.logout = (req, res) => {
+  // eslint-disable-next-line arrow-parens
+  req.session.destroy(err => {
+    res.redirect('/');
+  });
+};
+
 exports.add = (req, res) => {
   res.render('add', {
     layout: 'main-layout',
     tittle: 'Tambah produk | Little-f',
   });
+  productCode.push(nanoid(5));
 };
 
 // upload handler
-const productCode = nanoid(5);
+const productCode = [];
 const fileName = [];
 let imgIndex = 0;
 const destination = 'uploads';
 
 const imgName = () => {
-  const name = productCode + imgIndex++;
+  const name = productCode[0] + imgIndex++;
   fileName.push(destination + '/' + name + '.webp');
   return name;
 };
@@ -65,6 +100,7 @@ const uppercase = (data) => data.toUpperCase().slice(0, 1) + data.slice(1);
 exports.addNewProduct = (req, res) => {
   const productName = '[' + '"' + fileName[0] + '"' + ',' +
    '"' + fileName[1] + '"' + ',' + '"' + fileName[2] + '"' + ']';
+
   con.query(
       `INSERT INTO products (
           code,
@@ -78,7 +114,7 @@ exports.addNewProduct = (req, res) => {
           tokopedia
           ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
-        productCode,
+        productCode[0],
         uppercase(req.body.name),
         req.body.price,
         toArray(req.body.description),
@@ -92,6 +128,8 @@ exports.addNewProduct = (req, res) => {
         res.redirect('/add');
         if (err != 'null') {
           console.log('data berhasil disimpan');
+          fileName.splice(0, 3);
+          productCode.splice(0, 1);
         } else {
           console.log(err);
         }

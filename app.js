@@ -3,6 +3,7 @@ const expressLayouts = require('express-ejs-layouts');
 const routes = require('./util/routes');
 const path = require('path');
 const bp = require('body-parser');
+const session = require('express-session');
 
 const app = express();
 
@@ -20,7 +21,29 @@ const init = () => {
   console.log(`server berjalan pada http://localhost:${host}`);
 };
 
+app.use(
+    session({
+      secret: 'my_secret_key',
+      resave: false,
+      saveUninitialized: false,
+    }),
+);
+
+app.use((req, res, next) => {
+  if (req.session.userId === undefined) {
+    res.locals.username = 'Tamu';
+    res.locals.isLoggedIn = false;
+  } else {
+    res.locals.username = req.session.username;
+    res.locals.isLoggedIn = true;
+  }
+  next();
+});
+
 app.get('/', routes.home);
+app.get('/login', routes.login);
+app.post('/auth', routes.auth);
+app.get('/logout', routes.logout);
 app.get('/add', routes.add);
 app.post('/add', routes.uploadMultiple, routes.addNewProduct);
 app.get('/update/:id', routes.update);

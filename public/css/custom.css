@@ -41,7 +41,8 @@
 .svg-bg-top {
   background: url('/img/wavetop.svg') center top no-repeat;
   background-size: cover;
-  height: 250px;  
+  height: 250px;
+  filter:drop-shadow(0 1.8rem 1rem rgba(0,0,0,.2));
 }
 
 .ribbon {
@@ -83,3 +84,32 @@
 .about {
   text-align: center;
 }
+
+.logout {
+  line-height: 30px;
+  text-align: center;
+  float: right;
+  position: fixed;
+  bottom: 10px;
+  right: 5px;
+  padding: 10px 12.5px;
+  border-radius: 25px;
+  color: white;
+}
+
+.logout a {
+  color: white;
+}
+
+/* @media (max-width: 767.98px) {
+  #unggulan {
+    overflow: auto;
+    white-space: nowrap;
+    width: 100%;
+    background-color: #25d366;
+  }
+
+  #unggulan .unggulan-content {
+    display: inline-block;
+  }
+} */
