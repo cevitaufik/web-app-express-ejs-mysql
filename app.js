@@ -2,8 +2,9 @@ const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const routes = require('./util/routes');
 const path = require('path');
-const bp = require('body-parser');
+const bodyParser = require('body-parser');
 const session = require('express-session');
+const cors = require('cors');
 
 const app = express();
 
@@ -12,8 +13,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended: false}));
 app.set('view engine', 'ejs');
 
-app.use(bp.json());
-app.use(bp.urlencoded({extended: true}));
+app.use(cors());
+app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 const host = 3000;
 const init = () => {
@@ -49,5 +52,6 @@ app.post('/add', routes.uploadMultiple, routes.addNewProduct);
 app.get('/update/:id', routes.update);
 app.post('/update', routes.updateById);
 app.post('/delete/:id', routes.deleteById);
+app.post('/sendmail', routes.sendMail);
 
 init();

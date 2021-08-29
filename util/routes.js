@@ -2,6 +2,7 @@ const con = require('./db_config');
 const {nanoid} = require('nanoid');
 const multer = require('multer');
 const path = require('path');
+const {sendMail, sendMailConfirm} = require('./send_email');
 
 exports.home = (req, res) => {
   con.query( 'SELECT * FROM products; SELECT * FROM owner',
@@ -190,4 +191,13 @@ exports.deleteById = (req, res) => {
         console.log(results);
       },
   );
+};
+
+exports.sendMail = (req, res) => {
+  sendMail(req.body.name, req.body.subject, req.body.email, req.body.text);
+  sendMailConfirm(req.body.name, req.body.subject, req.body.email);
+
+  res.redirect('/');
+  console.log(req.body.email);
+  console.log(req.body.text);
 };

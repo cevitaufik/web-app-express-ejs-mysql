@@ -48,7 +48,7 @@
       <% bestProducts.forEach(product => { %>
         <% const img = JSON.parse(product.image) %>
         <div class="col-md-4 mb-3">
-          <div class="card h-100 mb-4 rounded-end" data-aos="fade-up" data-aos-delay="100">
+          <div class="card h-100 mb-4 rounded-end" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
             <!-- menambahkan class ribbon untuk unggulan -->
             <% if (product.bestProduct.toUpperCase() == 'Y') { %>
               <span class="ribbon">SPESIAL</span>
@@ -187,13 +187,17 @@
 
     <!-- semua produk -->
     <div class="semua-produk rounded-3 shadow bg-white p-4 mt-5" id="allProducts">
+
       <div class="dropdown text-center d-grid col-6 mx-auto mt-2 mb-4">
-        <select class="btn text-white bg-primary" id="productFilter">
-          <% category.forEach(e => { %>
-            <option value><%= e %> </option>
-          <% }) %>
-          <option value selected="selected">Semua produk</option>             
-        </select>
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+          Filter Produk
+        </button>
+          <div class="dropdown-menu dropdown-menu-dark col-12 mx-auto text-center" aria-labelledby="dropdownMenuButton2">
+            <button class="dropdown-item" onclick="filterSelection('all')">Semua Produk</button>
+            <% category.forEach(e => { %>
+              <button class="dropdown-item" onclick="filterSelection('<%= e.toLowerCase() %>')"><%= e %></button>
+            <% }) %>
+          </div>
       </div>
 
       <div class="row justify-content-center">
@@ -202,8 +206,8 @@
          <% } %>
         <% products.forEach(product => { %>
           <% const img = JSON.parse(product.image) %> 
-          <div class="col-md-4 mb-3">
-            <div class="card h-100 mb-4 rounded-end" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-md-4 mb-3 product-card <%= product.category.toLowerCase() %>">
+            <div class="card h-100 mb-4 rounded-end" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
               <!-- menambahkan class ribbon untuk unggulan -->
               <% if (product.bestProduct == 'Y') { %>
                 <span class="ribbon">SPESIAL</span>
@@ -364,24 +368,24 @@
                 <strong>Terimakasih</strong> pesan anda sudah kami terima. Kami akan segera menghubungi anda.
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>
-              <form action="#" name="contact-form">
+              <form method="post" action="/sendmail">
                 <div class="form-floating mb-3">
-                  <input type="text" class="form-control" placeholder="name@example.com" name="nama">
-                  <label for="floatingInput">Nama</label>
+                  <input type="text" class="form-control" placeholder="Subject" name="subject" id="subject">
+                  <label for="subject">Subject</label>
                 </div>
                 <div class="form-floating mb-3">
-                  <input type="email" class="form-control" placeholder="name@example.com" name="email">
-                  <label for="floatingInput">Alamat email</label>
+                  <input type="text" class="form-control" placeholder="Nama Kamu" name="name" id="name">
+                  <label for="name">Nama</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" placeholder="name@example.com" name="email" id="email">
+                  <label for="email">Alamat email</label>
                 </div>
                 <div class="form-floating">
-                  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" name="pesan"></textarea>
-                  <label for="floatingTextarea2">Pesan</label>
+                  <textarea class="form-control" placeholder="Leave a comment here" id="text" style="height: 150px" name="text" id="text"></textarea>
+                  <label for="text">Pesan</label>
                 </div>
-                <button type="submit" class="btn btn-primary mt-3 col-3 mx-auto btn-kirim">Kirim</button>
-                <button class="btn btn-primary mt-3 col-3 mx-auto btn-loading d-none" type="button" disabled>
-                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                  Loading...
-                </button>
+                <button type="submit" class="btn btn-primary mt-3 col-3 mx-auto" value="submit">Kirim</button>                
               </form>
             </div>
           </div>
@@ -402,3 +406,51 @@
       <a href="/logout" class="text-decoration-none d-block bg-danger mt-2 rounded-pill ps-2 pe-2 shadow">Logout</a>
      </div>
     <% } %>
+
+    <script>
+      // Show filtered elements
+      const addClass = (element, name) => {
+        const arr1 = element.className.split(" ");
+        const arr2 = name.split(" ");
+        for (let i = 0; i < arr2.length; i++) {
+          if (arr1.indexOf(arr2[i]) == -1) {
+            element.className += " " + arr2[i];
+          }
+        }
+      }
+
+      // Hide elements that are not selected
+      const removeClass = (element, name) => {
+        const arr1 = element.className.split(" ");
+        const arr2 = name.split(" ");
+        for (let i = 0; i < arr2.length; i++) {
+          while (arr1.indexOf(arr2[i]) > -1) {
+            arr1.splice(arr1.indexOf(arr2[i]), 1);
+          }
+        }
+        element.className = arr1.join(" ");
+      }
+
+      const filterSelection = c => {
+        const x = document.getElementsByClassName("product-card");
+        if (c == "all") c = "";
+        // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+        for (let i = 0; i < x.length; i++) {
+          removeClass(x[i], "show");
+          if (x[i].className.indexOf(c) > -1) addClass(x[i], "show");
+        }
+      }
+      filterSelection("all")
+
+
+      // Add active class to the current control button (highlight it)
+      const btnContainer = document.getElementById("myBtnContainer");
+      const btns = btnContainer.getElementsByClassName("btn");
+      for ( i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+          var current = document.getElementsByClassName("active");
+          current[0].className = current[0].className.replace(" active", "");
+          this.className += " active";
+        });
+      }
+    </script>
