@@ -201,3 +201,16 @@ exports.sendMail = (req, res) => {
   console.log(req.body.email);
   console.log(req.body.text);
 };
+
+exports.productPage = (req, res) => {
+  con.query(`SELECT * FROM products WHERE id = ?`,
+      [req.params.id],
+      (err, product) => {
+        res.render('product-page', {
+          layout: 'main-layout',
+          tittle: 'Halaman produk | Little-f',
+          product,
+        });
+      },
+  );
+};

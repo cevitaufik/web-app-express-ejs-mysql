@@ -53,5 +53,6 @@ app.get('/update/:id', routes.update);
 app.post('/update', routes.updateById);
 app.post('/delete/:id', routes.deleteById);
 app.post('/sendmail', routes.sendMail);
+app.get('/product/:id', routes.productPage);
 
 init();

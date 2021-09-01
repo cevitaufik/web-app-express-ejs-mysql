@@ -23,325 +23,137 @@
   category = category.sort()
 %>
 
-<!-- jumbotron start -->
-<div class="p-5 bg-primary text-white text-center">
-  <div class="container-fluid py-5">
-    <h1 class="display-5 fw-bold brand">Little-f</h1>
-    <p>Berbelanja dimanapun kamu mau</p>
-  </div>
+<!-- hero -->
+<div class="hero g-gray-100 py-16">
+    <!-- container -->
+    <div class="px-4 sm:px-8 lg:px-16 xl:px-20 mx-auto">
+        <!-- hero wrapper -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+
+            <!-- hero text -->
+            <div class="col-span-6">
+              <h1 class="font-bold text-4xl md:text-5xl max-w-xl text-gray-900 leading-tight">Little-f</h1>
+              <hr class="w-12 h-1 bg-orange-500 rounded-full mt-8">
+              <p class="text-gray-800 text-base leading-relaxed mt-8 font-semibold">Berbelanja dimanapun kamu mau. Kami hanya menjual baranag bekas berkualitas</p>
+              <div class="get-app flex space-x-5 mt-10 justify-center md:justify-start">
+                <button class="bg-white shadow-md px-3 py-2 rounded-lg flex items-center space-x-4">
+                  <div class="logo">
+                    <img src="img/shopee.png" alt="shopee">
+                  </div>
+                  <div class="text">
+                      <p class=" text-xs text-gray-600" style="font-size: 0.5rem;">Order melalui</p>
+                      <p class=" text-xs font-semibold text-gray-900">Shopee</p>
+                  </div>
+                </button>
+                <button class="bg-white shadow-md px-3 py-2 rounded-lg flex items-center space-x-4">
+                  <div class="image">
+                    <img src="img/tokopedia.png" alt="tokopedia">
+                  </div>
+                  <div class="text">
+                      <p class="text-xs text-gray-600" style="font-size: 0.5rem;">Order melalui</p>
+                      <p class="text-xs font-semibold text-gray-900">Tokopedia</p>
+                  </div>
+                </button>
+              </div>
+            </div>
+            <!-- hero image -->
+            <div class="col-span-6 grid justify-items-center">
+              <img src="/img/shopping.svg" class="w-9/12" alt="www.flaticon.com">
+            </div>
+        </div>
+    </div>
 </div>
-<div class="svg-bg-top"></div>
-<!-- jumbotron end -->
+  
+  <!-- end hero -->
+<div class="grid justify-items-center">
 
-<div class="container mb-5 mt-5">
-
-  <!-- produk unggulan -->  
-  <div class="container shadow p-4 unggulan mb-5" id="unggulan">
-    <h4 class="text-center p-3">Produk unggulan kami :</h4>
-    <div class="row justify-content-center">
-
-      <!-- looping produk unggulan -->
-      <% let bestProducts = products.filter(p => p.bestProduct == 'Y') %>
-      <% if (bestProducts.length == 0) { %>
-       <h5 class="text-center mt-5 mb-5">Belum ada produk</h5>
-      <% } %>
-      <% bestProducts.forEach(product => { %>
-        <% const img = JSON.parse(product.image) %>
-        <div class="col-md-4 mb-3">
-          <div class="card h-100 mb-4 rounded-end" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
-            <!-- menambahkan class ribbon untuk unggulan -->
-            <% if (product.bestProduct.toUpperCase() == 'Y') { %>
-              <span class="ribbon">SPESIAL</span>
-            <% } %>                              
-            <img src="<%= img[0] %>" class="card-img-top" alt="<%= product.name %>" loading="lazy">
-            <div class="card-body">
-              <h5 class="card-title"><%= product.name %></h5>
-              <h5 class="card-title text-success"><%= priceForm(product.price) %></h5>
-            </div>
-            <div class="text-center mt-3 card-footer bg-white border-0">
-
-              <% if (locals.isLoggedIn) { %>
-               <!-- Button trigger modal -->
-              <button type="button" class="btn btn-danger mt-2" data-bs-toggle="modal" data-bs-target="#delete<%= product.code %>">
-                Hapus
-              </button>
-
-              <!-- Modal -->
-              <div class="modal fade" id="delete<%= product.code %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content shadow">
-                    <div class="modal-body">
-                      <h5>Apakah anda yakin?</h5>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <form action="/delete/<%= product.id %>" method="post">
-                        <button type="submit" value="<%= product.id %>" class="btn btn-danger">Hapus</button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+<!-- produk unggulan --> 
+<div class="bg-yellow-400 mx-0 w-full overflow-hidden">
+  <h4 class="text-center p-3 text-xl font-bold">Produk unggulan kami :</h4>
+  <div class="flex overflow-x-scroll">
+    <div class="flex flex-nowrap">
+      <% let best = products.filter(p => p.bestProduct == 'Y') %>
+        <% if (best.length == 0) { %>
+          <h5 class="text-center mt-5 mb-5 text-xl font-bold">Belum ada produk</h5>
+        <% } %>
+        <% best.forEach(product => { %>
+          <% const img = JSON.parse(product.image) %>      
+          <div class="inline-block" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
+            <div class="product-card flex-shrink-0 m-6 relative overflow-hidden rounded-lg max-w-xs shadow-lg bg-local bg-cover h-96 bg-center hover:shadow-2xl hover:scale-105 transition-all transform duration-500 static shadow-xl w-96" style="background-image: url(<%= img[0] %>)">
+              <div class="relative pt-10 px-10 flex items-center justify-center">
+                <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3" style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;"></div>
               </div>
-
-              <a href="/update/<%= product.id %>" class="btn btn-warning mt-2">Perbaharui</a>
-              <% } %>
-              
-              <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#<%= product.code %>">
-                Detail produk
-              </button>
-              <a href="<%= product.shopee %>" class="btn text-white mt-2 shopee" role="button" target="blank">Order lewat Shopee</a>
-            </div>
-            <div class="modal fade" id="<%= product.code %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-              <!-- modal full screen -->
-              <div class="modal-dialog modal-fullscreen">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h3 class="modal-title" id="staticBackdropLabel"><%= product.name %></h3>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="row p-md-3 bg-white justify-content-center">
-                    <div class="col-md-5">
-                      <!-- carousel start -->
-                      <div id="carousel<%= product.code %>" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                          <button type="button" data-bs-target="#carousel<%= product.code %>" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                          <% for( let i = 1; i < img.length; i++ ) { %>
-                            <button type="button" data-bs-target="#carousel<%= product.code %>" data-bs-slide-to="<%= i %>" aria-label="Slide <%= i %>"></button>
-                          <% } %>
-                        </div>
-                        <div class="carousel-inner">
-                          <div class="carousel-item active">
-                            <img src="<%= img[0] %>" class="d-block w-100" alt="<%= product.name %>">
-                          </div>
-                          <% for( let i = 1; i < img.length; i++ ) { %>
-                            <div class="carousel-item">
-                              <img src="<%= img[i] %>" class="d-block w-100" alt="<%= product.name %>">
-                            </div>
-                          <% } %>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carousel<%= product.code %>" data-bs-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                          <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carousel<%= product.code %>" data-bs-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="visually-hidden">Next</span>
-                        </button>
-                      </div>
-                      <!-- carousel end -->
-                    </div>
-                    <div class="col-md-7 p-4">
-                      <h3 class="card-title text-success pt-3"><%= priceForm(product.price) %></h3>
-                      <% const desc = JSON.parse(product.description) %>
-                      <% for( let i = 0; i < desc.length; i++ ) { %>
-                        <h5><%= desc[i] %></h5>
-                      <% } %>
-                      <div class="modal-footer">
-
-                        <% if (locals.isLoggedIn) { %>
-                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-danger mt-2" data-bs-toggle="modal" data-bs-target="#delete2<%= product.code %>">
-                          Hapus
-                        </button>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="delete2<%= product.code %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog">
-                            <div class="modal-content shadow">
-                              <div class="modal-body">
-                                <h5>Apakah anda yakin?</h5>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <form action="/delete/<%= product.id %>" method="post">
-                                  <button type="submit" value="<%= product.id %>" class="btn btn-danger">Hapus</button>
-                                </form>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <a href="/update/<%= product.id %>" class="btn btn-warning mt-2">Perbaharui</a>
-                        <% } %>
-
-                        <button type="button" class="btn btn-secondary mt-2" data-bs-dismiss="modal">Close</button>
-                        <a href="<%= product.shopee %> " class="btn text-white mt-2 shopee" role="button" target="blank">Order lewat Shopee</a>
-                        <a href="https://api.whatsapp.com/send?phone=<%= owner[0].whatsapp %>&text=Apakah%20&quot;<%= product.name.replace('\s', '%20') %>&quot;%20masih%20ada?" class="btn mt-2 whatsapp text-white" role="button" target="blank">
-                          <span class="bi bi-whatsapp"></span>&nbsp;&nbsp;Chat
-                        </a>
-                      </div>      
-                    </div>
-                  </div>                        
-                </div>
+              <div class="static text-white px-6 pb-6 mt-6">
+                <span class="ribbon">SPESIAL</span>
+                <h4 class="absolute block bottom-14 z-10 font-semibold text-xl pb-4"><%= product.name %></h4>
+                <h4 class="absolute block bg-white bottom-5 left-5 z-10 rounded-full text-green-500 font-bold py-2 px-3 w-max"><%= priceForm(product.price) %></h4>                 
+                <a class="absolute inline-block bottom-5 z-10 right-5 ml-auto bg-blue-500 rounded-full text-white font-bold py-2 px-3 w-max" href="/product/<%= product.id %> ">Detail</a> 
               </div>
-              <!-- modal full screen end-->
             </div>
           </div>
-        </div>
-      <% }) %> 
+      <% }) %>
     </div>
   </div>
-  <!-- akhir produk unggulan -->
+</div>
+<!-- akhir produk unggulan -->
 
   <%- include('about.html') %>
 
     <!-- semua produk -->
-    <div class="semua-produk rounded-3 shadow bg-white p-4 mt-5" id="allProducts">
+  <div class="shadow-xl bg-gray-100 my-5 w-11/12 mx-auto" id="allProducts">
 
-      <div class="dropdown text-center d-grid col-6 mx-auto mt-2 mb-4">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-          Filter Produk
+   <!-- component -->
+    <div class="flex justify-center">
+      <div class="group inline-block z-20 relative mt-5">
+        <button class="outline-none focus:outline-none border px-3 py-1 bg-blue-500 rounded-sm flex items-center w-96 rounded-full">
+          <span class="pr-1 font-semibold text-white flex-1">Filter Produk</span>
+          <span>
+            <svg class="fill-current h-4 w-4 transform group-hover:-rotate-180 transition duration-150 ease-in-out text-white" xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+              />
+            </svg>
+          </span>
         </button>
-          <div class="dropdown-menu dropdown-menu-dark col-12 mx-auto text-center" aria-labelledby="dropdownMenuButton2">
-            <button class="dropdown-item" onclick="filterSelection('all')">Semua Produk</button>
-            <% category.forEach(e => { %>
-              <button class="dropdown-item" onclick="filterSelection('<%= e.toLowerCase() %>')"><%= e %></button>
-            <% }) %>
+        <div class="bg-blue-500 border absolute rounded-sm transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-bottom block w-96">
+          <button class="block px-3 py-1 hover:bg-gray-100 w-96" onclick="filterSelection('all')">Semua Produk</button>
+          <% category.forEach(e => { %>
+            <button class="block px-3 py-1 hover:bg-gray-100 w-96" onclick="filterSelection('<%= e.toLowerCase() %>')"><%= e %></button>         
+          <% }) %>
           </div>
       </div>
+    </div>
 
-      <div class="row justify-content-center">
-        <% if (products.length == 0) { %>
-          <h5 class="text-center mt-5 mb-5">Belum ada produk</h5>
-         <% } %>
-        <% products.forEach(product => { %>
-          <% const img = JSON.parse(product.image) %> 
-          <div class="col-md-4 mb-3 product-card <%= product.category.toLowerCase() %>">
-            <div class="card h-100 mb-4 rounded-end" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
-              <!-- menambahkan class ribbon untuk unggulan -->
-              <% if (product.bestProduct == 'Y') { %>
-                <span class="ribbon">SPESIAL</span>
-              <% } %>                              
-              <img src="<%= img[0] %>" class="card-img-top" alt="<%= product.name %>" loading="lazy">
-              <div class="card-body">
-                <h5 class="card-title"><%= product.name %></h5>
-                <h5 class="card-title text-success"><%= priceForm(product.price) %></h5>
+    <div class="flex flex-wrap justify-center">      
+      <% if (products.length == 0) { %>
+        <h5 class="text-center mt-5 mb-5 text-xl font-bold">Belum ada produk</h5>
+      <% } %>
+      <% products.forEach(product => { %>
+        <% const img = JSON.parse(product.image) %>
+
+          <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
+            <div class="product-card <%= product.category.toLowerCase() %> flex-shrink-0 m-6 relative overflow-hidden rounded-lg max-w-xs shadow-lg bg-local bg-cover h-96 bg-center hover:shadow-2xl hover:scale-105 transition-all transform duration-500 static shadow-xl w-96" style="background-image: url(<%= img[0] %>)">
+              <div class="relative pt-10 px-10 flex items-center justify-center">
+                <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3" style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;"></div>
               </div>
-              <div class="text-center mt-3 card-footer bg-white border-0">
-                
-                <% if (locals.isLoggedIn) { %>
-                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-danger mt-2" data-bs-toggle="modal" data-bs-target="#delete<%= product.code %>">
-                  Hapus
-                </button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="delete<%= product.code %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content shadow">
-                      <div class="modal-body">
-                        <h5>Apakah anda yakin?</h5>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <form action="/delete/<%= product.id %>" method="post">
-                          <button type="submit" value="<%= product.id %>" class="btn btn-danger">Hapus</button>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <a href="/update/<%= product.id %>" class="btn btn-warning mt-2">Perbaharui</a>
-                <% } %>
-
-                <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#<%= product.code %>">
-                  Detail produk
-                </button>
-                <a href="<%= product.shopee %>" class="btn text-white mt-2 shopee" role="button" target="blank">Order lewat Shopee</a>
-              </div>
-              <div class="modal fade" id="<%= product.code %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <!-- modal full screen -->
-                <div class="modal-dialog modal-fullscreen">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h3 class="modal-title" id="staticBackdropLabel"><%= product.name %></h3>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="row p-md-3 bg-white justify-content-center">
-                      <div class="col-md-5">
-                        <!-- carousel start -->
-                        <div id="carousel<%= product.code %>" class="carousel slide" data-bs-ride="carousel">
-                          <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carousel<%= product.code %>" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <% for( let i = 1; i < img.length; i++ ) { %>
-                              <button type="button" data-bs-target="#carousel<%= product.code %>" data-bs-slide-to="<%= i %>" aria-label="Slide <%= i %>"></button>
-                            <% } %>
-                          </div>
-                          <div class="carousel-inner">
-                            <div class="carousel-item active">
-                              <img src="<%= img[0] %>" class="d-block w-100" alt="<%= product.name %>">
-                            </div>
-                            <% for( let i = 1; i < img.length; i++ ) { %>
-                              <div class="carousel-item">
-                                <img src="<%= img[i] %>" class="d-block w-100" alt="<%= product.name %>">
-                              </div>
-                            <% } %>
-                          </div>
-                          <button class="carousel-control-prev" type="button" data-bs-target="#carousel<%= product.code %>" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                          </button>
-                          <button class="carousel-control-next" type="button" data-bs-target="#carousel<%= product.code %>" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                          </button>
-                        </div>
-                        <!-- carousel end -->
-                      </div>
-                      <div class="col-md-7 p-4">
-                        <h3 class="card-title text-success pt-3"><%= priceForm(product.price) %></h3>
-                        <% const desc = JSON.parse(product.description) %>
-                        <% for( let i = 0; i < desc.length; i++ ) { %>
-                          <h5><%= desc[i] %></h5>
-                        <% } %>
-                        <div class="modal-footer">                          
-
-                          <% if (locals.isLoggedIn) { %>
-                            <!-- Button trigger modal -->
-                          <button type="button" class="btn btn-danger mt-2" data-bs-toggle="modal" data-bs-target="#delete2<%= product.code %>">
-                            Hapus
-                          </button>
-
-                          <!-- Modal -->
-                          <div class="modal fade" id="delete2<%= product.code %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                              <div class="modal-content shadow">
-                                <div class="modal-body">
-                                  <h5>Apakah anda yakin?</h5>
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                  <form action="/delete/<%= product.id %>" method="post">
-                                    <button type="submit" value="<%= product.id %>" class="btn btn-danger">Hapus</button>
-                                  </form>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <a href="/update/<%= product.id %>" class="btn btn-warning mt-2">Perbaharui</a>
-                          <% } %>
-
-                          <button type="button" class="btn btn-secondary mt-2" data-bs-dismiss="modal">Close</button>
-                          <a href="<%= product.shopee %> " class="btn text-white mt-2 shopee" role="button" target="blank">Order lewat Shopee</a>
-                          <a href="https://api.whatsapp.com/send?phone=<%= owner[0].whatsapp %>&text=Apakah%20&quot;<%= product.name.replace(/\s/g, '%20') %>&quot;%20masih%20ada?" class="btn mt-2 whatsapp text-white" role="button" target="blank">
-                            <span class="bi bi-whatsapp"></span>&nbsp;&nbsp;Chat
-                          </a>
-                        </div>      
-                      </div>
-                    </div>                        
-                  </div>
-                </div>
-                <!-- modal full screen end-->
+              <div class="static text-white px-6 pb-6 mt-6">
+                <% if (product.bestProduct == 'Y') { %>
+                  <span class="ribbon">SPESIAL</span>
+                <% } %> 
+                <h4 class="absolute block bottom-14 z-10 font-semibold text-xl pb-4"><%= product.name %></h4>
+                <h4 class="absolute block bg-white bottom-5 left-5 z-10 rounded-full text-green-500 font-bold py-2 px-3 w-max"><%= priceForm(product.price) %></h4>                 
+                <a class="absolute inline-block bottom-5 z-10 right-5 ml-auto bg-blue-500 rounded-full text-white font-bold py-2 px-3 w-max" href="/product/<%= product.id %> ">Detail</a>
               </div>
             </div>
           </div>
         <% }) %>
       </div>
-    </div>
-    <!-- akhir semua produk -->
   </div>
+</div>
+    <!-- akhir semua produk -->
+
   <!-- product end -->
 
     <!-- kontak -->
