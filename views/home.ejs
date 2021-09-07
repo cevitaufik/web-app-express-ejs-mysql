@@ -78,11 +78,8 @@
         <% } %>
         <% best.forEach(product => { %>
           <% const img = JSON.parse(product.image) %>      
-          <div class="inline-block" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
-            <div class="product-card flex-shrink-0 m-6 relative overflow-hidden rounded-lg max-w-xs shadow-lg bg-local bg-cover h-96 bg-center hover:shadow-2xl hover:scale-105 transition-all transform duration-500 static shadow-xl w-96" style="background-image: url(<%= img[0] %>)">
-              <div class="relative pt-10 px-10 flex items-center justify-center">
-                <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3" style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;"></div>
-              </div>
+          <div class="inline-block my-6" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
+            <div class="product-card flex-shrink-0 relative overflow-hidden rounded-lg lg:m-6 m-2 lg:m-6  max-w-xs shadow-lg bg-local bg-cover h-96 bg-center hover:shadow-2xl hover:scale-105 transition-all transform duration-500 static shadow-xl w-96" style="background-image: url(<%= img[0] %>)">
               <div class="static text-white px-6 pb-6 mt-6">
                 <span class="ribbon">SPESIAL</span>
                 <h4 class="absolute block bottom-14 z-10 font-semibold text-xl pb-4"><%= product.name %></h4>
@@ -100,31 +97,28 @@
   <%- include('about.html') %>
 
     <!-- semua produk -->
-  <div class="shadow-xl bg-gray-100 my-5 w-11/12 mx-auto" id="allProducts">
+  <div class="shadow-xl bg-gray-100 my-5 w-11/12 mx-auto rounded-lg" id="allProducts">
 
-   <!-- component -->
+   <!-- filter product -->
     <div class="flex justify-center">
       <div class="group inline-block z-20 relative mt-5">
         <button class="outline-none focus:outline-none border px-3 py-1 bg-blue-500 rounded-sm flex items-center w-96 rounded-full">
           <span class="pr-1 font-semibold text-white flex-1">Filter Produk</span>
           <span>
-            <svg class="fill-current h-4 w-4 transform group-hover:-rotate-180 transition duration-150 ease-in-out text-white" xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-            >
-              <path
-                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-              />
+            <svg class="fill-current h-4 w-4 transform group-hover:-rotate-180 transition duration-150 ease-in-out text-white" xmlns="http://www.w3.org/2000/svg"           viewBox="0 0 20 20">
+              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
             </svg>
           </span>
         </button>
-        <div class="bg-blue-500 border absolute rounded-sm transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-bottom block w-96">
-          <button class="block px-3 py-1 hover:bg-gray-100 w-96" onclick="filterSelection('all')">Semua Produk</button>
+        <div class="bg-blue-500 rounded-lg border absolute rounded-sm transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top block w-96">
+          <button class="block px-3 py-1 hover:bg-gray-100 w-96 text-white font-semibold hover:text-blue-500" onclick="filterSelection('all')">Semua Produk</button>
           <% category.forEach(e => { %>
-            <button class="block px-3 py-1 hover:bg-gray-100 w-96" onclick="filterSelection('<%= e.toLowerCase() %>')"><%= e %></button>         
+            <button class="block px-3 py-1 hover:bg-gray-100 w-96 text-white font-semibold hover:text-blue-500" onclick="filterSelection('<%= e.toLowerCase() %>')"><%= e %></button>         
           <% }) %>
           </div>
       </div>
     </div>
+    <!-- filter product end -->
 
     <div class="flex flex-wrap justify-center">      
       <% if (products.length == 0) { %>
@@ -135,9 +129,6 @@
 
           <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
             <div class="product-card <%= product.category.toLowerCase() %> flex-shrink-0 m-6 relative overflow-hidden rounded-lg max-w-xs shadow-lg bg-local bg-cover h-96 bg-center hover:shadow-2xl hover:scale-105 transition-all transform duration-500 static shadow-xl w-96" style="background-image: url(<%= img[0] %>)">
-              <div class="relative pt-10 px-10 flex items-center justify-center">
-                <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3" style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;"></div>
-              </div>
               <div class="static text-white px-6 pb-6 mt-6">
                 <% if (product.bestProduct == 'Y') { %>
                   <span class="ribbon">SPESIAL</span>
@@ -156,62 +147,61 @@
 
   <!-- product end -->
 
-    <!-- kontak -->
-    <div class="container text-center" id="contact">
-      <div class="row justify-content-center">
-        <div class="col-md-7">
-          <h4 class="mb-4">Hubungi kami</h4>
-          <div class="mb-5">
-            <div class="container border p-3 rounded-3">
-              <h6 class="mb-3">Chat langsung melalui Whatsapp</h6>
-              <div class="form-floating">
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                <label for="floatingTextarea2">Tulis pesan Whatsapp anda disini</label>
-                <div class="d-grid col-3 mx-auto">
-                  <a href="https://api.whatsapp.com/send?phone=<%= owner[0].whatsapp %>&text={{ pesan | deleteSpace}}" class="btn mt-3 whatsapp bi bi-whatsapp text-white" role="button" target="blank">&nbsp;Kirim</a>
-                </div>
-              </div>
+<!-- kontak -->
+<div class="flex justify-center w-11/12" id="contact">
+  <div class="row justify-content-center">
+    <!-- email form -->
+    <div class="min-h-screen py-6 flex flex-col justify-center sm:py-12 my-5 mx-auto">
+      <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
+        </div>
+        <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-10">
+          <div class="max-w-md mx-auto">
+            <div>
+              <h1 class="text-2xl font-semibold">Hubungi kami lewat email</h1>
             </div>
-          </div>
-          <div class="container border p-3 rounded-3">
-            <h6 class="mb-3">Atau melalui email</h6>
-            <div class="mb-3">
-              <div class="alert alert-success alert-dismissible fade show d-none" role="alert">
-                <strong>Terimakasih</strong> pesan anda sudah kami terima. Kami akan segera menghubungi anda.
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <div class="divide-y divide-gray-200">
+              <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+                <form method="post" action="/sendmail">
+                  <div class="relative h-16">
+                    <input id="subject" name="subject" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Subject"/>
+                    <label for="subject" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Subject</label>
+                  </div>
+                  <div class="relative h-16">
+                    <input id="name" name="name" type="name" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="name" />
+                    <label for="name" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Nama</label>
+                  </div>
+                  <div class="relative h-16">
+                    <input id="email" name="email" type="email" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Email" />
+                    <label for="email" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Alamat email</label>
+                  </div>
+                  <div class="relative h-44">
+                    <textarea id="text" name="text" type="text" class="peer placeholder-transparent h-40 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="text"></textarea>
+                    <label for="text" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Pesan</label>
+                  </div>
+                  <div class="relative">
+                    <button type="submit" class="bg-blue-500 text-white rounded-md px-2 py-1">Kirim</button>
+                  </div>                  
+                </form>
               </div>
-              <form method="post" action="/sendmail">
-                <div class="form-floating mb-3">
-                  <input type="text" class="form-control" placeholder="Subject" name="subject" id="subject">
-                  <label for="subject">Subject</label>
-                </div>
-                <div class="form-floating mb-3">
-                  <input type="text" class="form-control" placeholder="Nama Kamu" name="name" id="name">
-                  <label for="name">Nama</label>
-                </div>
-                <div class="form-floating mb-3">
-                  <input type="email" class="form-control" placeholder="name@example.com" name="email" id="email">
-                  <label for="email">Alamat email</label>
-                </div>
-                <div class="form-floating">
-                  <textarea class="form-control" placeholder="Leave a comment here" id="text" style="height: 150px" name="text" id="text"></textarea>
-                  <label for="text">Pesan</label>
-                </div>
-                <button type="submit" class="btn btn-primary mt-3 col-3 mx-auto" value="submit">Kirim</button>                
-              </form>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- Whatsapp -->
-    <% if (!locals.isLoggedIn) { %>
-      <div class="whatsapp-logo shadow">
-        <a href="https://api.whatsapp.com/send?phone=6289632943033&text=Halo%20admin%20Little-f" class="text-decoration-none d-block" target="_blank"><em class="bi bi-whatsapp"></em></a>
-      </div>  
-    <% } %>
-    <!-- Whatsapp end -->
-    <!-- kontak end -->
+  </div>
+</div>
+
+
+<!-- Whatsapp -->
+<% if (!locals.isLoggedIn) { %>
+  <div class="whatsapp-logo shadow">
+    <a href="https://api.whatsapp.com/send?phone=6289632943033&text=Halo%20admin%20Little-f" class="text-decoration-none d-block" target="_blank"><em class="bi bi-whatsapp"></em></a>
+  </div>  
+<% } %>
+<!-- Whatsapp end -->
+<!-- kontak end -->
     <% if (locals.isLoggedIn) { %>
      <div class="logout">
       <a href="/add" class="text-decoration-none d-block bg-success rounded-pill ps-2 pe-2 shadow">+ Produk</a>
@@ -259,7 +249,7 @@
       const btnContainer = document.getElementById("myBtnContainer");
       const btns = btnContainer.getElementsByClassName("btn");
       for ( i = 0; i < btns.length; i++) {
-        btns[i].addEventListener("click", function() {
+        btns[i].addEventListener("click", () => {
           var current = document.getElementsByClassName("active");
           current[0].className = current[0].className.replace(" active", "");
           this.className += " active";

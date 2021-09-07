@@ -205,12 +205,14 @@ exports.sendMail = (req, res) => {
 exports.productPage = (req, res) => {
   con.query(`SELECT * FROM products WHERE id = ?`,
       [req.params.id],
-      (err, product) => {
+      (err, db) => {
         res.render('product-page', {
           layout: 'main-layout',
           tittle: 'Halaman produk | Little-f',
-          product,
+          product: db[0],
         });
       },
   );
 };
+
+// 139.162.63.175

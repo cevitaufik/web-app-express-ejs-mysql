@@ -1,3 +1,67 @@
-<div>
-  <p class="text-center"><%= product[0].name %> </p>
+<% const img = JSON.parse(product.image) %>
+<div class="grid justify-items-center py-10">
+  <div class="w-4/5">
+    <h1 class="text-2xl font-bold border-b-2 border-gray-300"><%= product.name %> </h1>
+    <div class="grid grid-cols-2 gap-4">      
+
+      <div class="product-page-container carousel relative rounded relative overflow-hidden shadow-xl py-10">
+        <div class="carousel-inner relative overflow-hidden w-2/4">
+          <!--Slide 1-->
+          <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden=""
+            checked="checked">
+
+          <img src="/<%= img[0] %>" alt="<%= product.name %>" class="carousel-item absolute">
+          <label for="carousel-3"
+            class="control-1 w-10 h-10 ml-1 md:ml-5 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto flex justify-center">
+            <em class="bi bi-chevron-left leading-10"></em></label>
+          <label for="carousel-2"
+            class="next control-1 w-10 h-10 mr-1 md:mr-5 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">
+            <em class="bi bi-chevron-right leading-10"></em></label>
+      
+          <!--Slide 2-->
+          <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
+          <img src="/<%= img[1] %>" alt="<%= product.name %>" class="carousel-item absolute">
+          <label for="carousel-1"
+            class="control-2 w-10 h-10 ml-1 md:ml-5 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">
+            <em class="bi bi-chevron-left leading-10"></em></label>
+          <label for="carousel-3"
+            class="next control-2 w-10 h-10 mr-1 md:mr-5 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">
+            <em class="bi bi-chevron-right leading-10"></em></label>
+      
+          <!--Slide 3-->
+          <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
+          <img src="/<%= img[2] %>" alt="<%= product.name %>" class="carousel-item absolute">
+          <label for="carousel-2"
+            class="control-3 w-10 h-10 ml-1 md:ml-5 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">
+            <em class="bi bi-chevron-left leading-10"></em></label>
+          <label for="carousel-1"
+            class="next control-3 w-10 h-10 mr-1 md:mr-5 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">
+            <em class="bi bi-chevron-right leading-10"></em></label>
+      
+          <!-- Add additional indicators for each slide-->
+          <ol class="carousel-indicators">
+            <li class="inline-block mr-3">
+              <label for="carousel-1"
+                class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+            </li>
+            <li class="inline-block mr-3">
+              <label for="carousel-2"
+                class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+            </li>
+            <li class="inline-block mr-3">
+              <label for="carousel-3"
+                class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+            </li>
+          </ol>
+      
+        </div>
+      </div>
+
+      <div class="py-10">
+        <h1><%= product.price %> </h1>
+      </div>
+
+      </div>
+    </div>
+  </div>
 </div>
