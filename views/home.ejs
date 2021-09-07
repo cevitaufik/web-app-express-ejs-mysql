@@ -6,8 +6,8 @@
     return price + angka;
   }
 
-  const products = db[0];
-  const owner = db[1];
+  const products = data[0];
+  const owner = data[1];
 
   let category = [];
   const unique = (value, index, self) => {
@@ -24,137 +24,136 @@
 %>
 
 <!-- hero -->
-<div class="hero g-gray-100 py-16">
-    <!-- container -->
-    <div class="px-4 sm:px-8 lg:px-16 xl:px-20 mx-auto">
-        <!-- hero wrapper -->
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+<div class="hero py-16">
+  <!-- container -->
+  <div class="px-4 sm:px-8 lg:px-16 xl:px-20 mx-auto">
+    <!-- hero wrapper -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
 
-            <!-- hero text -->
-            <div class="col-span-6">
-              <h1 class="font-bold text-4xl md:text-5xl max-w-xl text-gray-900 leading-tight">Little-f</h1>
-              <hr class="w-12 h-1 bg-orange-500 rounded-full mt-8">
-              <p class="text-gray-800 text-base leading-relaxed mt-8 font-semibold">Berbelanja dimanapun kamu mau. Kami hanya menjual baranag bekas berkualitas</p>
-              <div class="get-app flex space-x-5 mt-10 justify-center md:justify-start">
-                <button class="bg-white shadow-md px-3 py-2 rounded-lg flex items-center space-x-4">
-                  <div class="logo">
-                    <img src="img/shopee.png" alt="shopee">
-                  </div>
-                  <div class="text">
-                      <p class=" text-xs text-gray-600" style="font-size: 0.5rem;">Order melalui</p>
-                      <p class=" text-xs font-semibold text-gray-900">Shopee</p>
-                  </div>
-                </button>
-                <button class="bg-white shadow-md px-3 py-2 rounded-lg flex items-center space-x-4">
-                  <div class="image">
-                    <img src="img/tokopedia.png" alt="tokopedia">
-                  </div>
-                  <div class="text">
-                      <p class="text-xs text-gray-600" style="font-size: 0.5rem;">Order melalui</p>
-                      <p class="text-xs font-semibold text-gray-900">Tokopedia</p>
-                  </div>
-                </button>
-              </div>
+      <!-- hero text -->
+      <div class="col-span-6">
+        <h1 class="font-bold text-4xl md:text-5xl max-w-xl text-gray-900 leading-tight">Little-f</h1>
+        <span class="block w-12 h-1 mt-2 border-solid border-b-4 border-white"></span>
+        <p class="text-gray-800 text-base leading-relaxed mt-8 font-semibold">Berbelanja dimanapun kamu mau. Kami hanya menjual barang bekas berkualitas</p>
+        <div class="get-app flex space-x-5 mt-10 justify-center md:justify-start">
+          <a class="bg-white shadow-md px-3 py-2 rounded-br-xl rounded-tl-xl flex items-center space-x-4 hover:shadow-xl hover:scale-105 transition-all transform duration-500" href="https://shopee.co.id/novianti20?categoryId=33&itemId=9768666849" target="_blank" type="button">
+            <div class="logo">
+              <img src="img/shopee.png" alt="shopee">
             </div>
-            <!-- hero image -->
-            <div class="col-span-6 grid justify-items-center">
-              <img src="/img/shopping.svg" class="w-9/12" alt="www.flaticon.com">
+            <div class="text">
+              <p class=" text-xs text-gray-600" style="font-size: 0.5rem;">Order melalui</p>
+              <p class=" text-xs font-semibold text-gray-900">Shopee</p>
             </div>
+          </a>
+          <a class="bg-white shadow-md px-3 py-2 rounded-bl-xl rounded-tr-xl flex items-center space-x-4 hover:shadow-xl hover:scale-105 transition-all transform duration-500" href="https://tokopedia.link/RePGkFiAZhb" target="_blank" type="button">
+            <div class="image">
+              <img src="img/tokopedia.png" alt="tokopedia">
+            </div>
+            <div class="text">
+              <p class="text-xs text-gray-600" style="font-size: 0.5rem;">Order melalui</p>
+              <p class="text-xs font-semibold text-gray-900">Tokopedia</p>
+            </div>
+          </a>
         </div>
-    </div>
-</div>
-  
-  <!-- end hero -->
-<div class="grid justify-items-center">
-
-<!-- produk unggulan --> 
-<div class="bg-yellow-400 mx-0 w-full overflow-hidden">
-  <h4 class="text-center p-3 text-xl font-bold">Produk unggulan kami :</h4>
-  <div class="flex overflow-x-scroll">
-    <div class="flex flex-nowrap">
-      <% let best = products.filter(p => p.bestProduct == 'Y') %>
-        <% if (best.length == 0) { %>
-          <h5 class="text-center mt-5 mb-5 text-xl font-bold">Belum ada produk</h5>
-        <% } %>
-        <% best.forEach(product => { %>
-          <% const img = JSON.parse(product.image) %>      
-          <div class="inline-block my-6" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
-            <div class="product-card flex-shrink-0 relative overflow-hidden rounded-lg lg:m-6 m-2 lg:m-6  max-w-xs shadow-lg bg-local bg-cover h-96 bg-center hover:shadow-2xl hover:scale-105 transition-all transform duration-500 static shadow-xl w-96" style="background-image: url(<%= img[0] %>)">
-              <div class="static text-white px-6 pb-6 mt-6">
-                <span class="ribbon">SPESIAL</span>
-                <h4 class="absolute block bottom-14 z-10 font-semibold text-xl pb-4"><%= product.name %></h4>
-                <h4 class="absolute block bg-white bottom-5 left-5 z-10 rounded-full text-green-500 font-bold py-2 px-3 w-max"><%= priceForm(product.price) %></h4>                 
-                <a class="absolute inline-block bottom-5 z-10 right-5 ml-auto bg-blue-500 rounded-full text-white font-bold py-2 px-3 w-max" href="/product/<%= product.id %> ">Detail</a> 
-              </div>
-            </div>
-          </div>
-      <% }) %>
+      </div>
+      <!-- hero image -->
+      <div class="col-span-6 grid justify-items-center">
+        <img src="/img/hero.png" class="w-9/12" alt="www.flaticon.com">
+      </div>
     </div>
   </div>
 </div>
-<!-- akhir produk unggulan -->
+
+<!-- end hero -->
+<div class="grid justify-items-center">
+
+  <!-- produk unggulan -->
+  <div class="bg-yellow-400 mx-0 w-full overflow-hidden">
+    <h4 class="text-center p-3 text-xl font-bold">Produk unggulan kami :</h4>
+    <div class="flex overflow-x-scroll">
+      <div class="flex flex-nowrap">
+        <% let best = products.filter(p => p.bestProduct == 'Y') %>
+        <% if (best.length == 0) { %>
+        <h5 class="text-center mt-5 mb-5 text-xl font-bold">Belum ada produk</h5>
+        <% } %>
+        <% best.forEach(product => { %>
+        <% const img = JSON.parse(product.image) %>
+        <div class="inline-block my-6" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
+          <div class="product-card flex-shrink-0 relative overflow-hidden rounded-lg lg:m-6 m-2 lg:m-6  max-w-xs shadow-lg bg-local bg-cover h-96 bg-center hover:shadow-2xl hover:scale-105 transition-all transform duration-500 static shadow-xl w-96" style="background-image: url(<%= img[0] %>)">
+            <div class="static text-white px-6 pb-6 mt-6">
+              <span class="ribbon">SPESIAL</span>
+              <h4 class="absolute block bottom-14 z-10 font-semibold text-xl pb-4"><%= product.name %></h4>
+              <h4 class="absolute block bg-white bottom-5 left-5 z-10 rounded-full text-green-500 font-bold py-2 px-3 w-max"><%= priceForm(product.price) %></h4>
+              <a class="absolute inline-block bottom-5 z-10 right-5 ml-auto bg-blue-500 rounded-full text-white font-bold py-2 px-3 w-max" href="/product/<%= product.id %> ">Detail</a>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+  <!-- akhir produk unggulan -->
 
   <%- include('about.html') %>
 
-    <!-- semua produk -->
+  <!-- semua produk -->
   <div class="shadow-xl bg-gray-100 my-5 w-11/12 mx-auto rounded-lg" id="allProducts">
 
-   <!-- filter product -->
+    <!-- filter product -->
     <div class="flex justify-center">
       <div class="group inline-block z-20 relative mt-5">
         <button class="outline-none focus:outline-none border px-3 py-1 bg-blue-500 rounded-sm flex items-center w-96 rounded-full">
           <span class="pr-1 font-semibold text-white flex-1">Filter Produk</span>
           <span>
-            <svg class="fill-current h-4 w-4 transform group-hover:-rotate-180 transition duration-150 ease-in-out text-white" xmlns="http://www.w3.org/2000/svg"           viewBox="0 0 20 20">
-              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+            <svg class="fill-current h-4 w-4 transform group-hover:-rotate-180 transition duration-150 ease-in-out text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
             </svg>
           </span>
         </button>
         <div class="bg-blue-500 rounded-lg border absolute rounded-sm transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top block w-96">
           <button class="block px-3 py-1 hover:bg-gray-100 w-96 text-white font-semibold hover:text-blue-500" onclick="filterSelection('all')">Semua Produk</button>
           <% category.forEach(e => { %>
-            <button class="block px-3 py-1 hover:bg-gray-100 w-96 text-white font-semibold hover:text-blue-500" onclick="filterSelection('<%= e.toLowerCase() %>')"><%= e %></button>         
+          <button class="block px-3 py-1 hover:bg-gray-100 w-96 text-white font-semibold hover:text-blue-500" onclick="filterSelection('<%= e.toLowerCase() %>')"><%= e %></button>
           <% }) %>
-          </div>
+        </div>
       </div>
     </div>
     <!-- filter product end -->
 
-    <div class="flex flex-wrap justify-center">      
+    <div class="flex flex-wrap justify-center">
       <% if (products.length == 0) { %>
-        <h5 class="text-center mt-5 mb-5 text-xl font-bold">Belum ada produk</h5>
+      <h5 class="text-center mt-5 mb-5 text-xl font-bold">Belum ada produk</h5>
       <% } %>
       <% products.forEach(product => { %>
-        <% const img = JSON.parse(product.image) %>
+      <% const img = JSON.parse(product.image) %>
 
-          <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
-            <div class="product-card <%= product.category.toLowerCase() %> flex-shrink-0 m-6 relative overflow-hidden rounded-lg max-w-xs shadow-lg bg-local bg-cover h-96 bg-center hover:shadow-2xl hover:scale-105 transition-all transform duration-500 static shadow-xl w-96" style="background-image: url(<%= img[0] %>)">
-              <div class="static text-white px-6 pb-6 mt-6">
-                <% if (product.bestProduct == 'Y') { %>
-                  <span class="ribbon">SPESIAL</span>
-                <% } %> 
-                <h4 class="absolute block bottom-14 z-10 font-semibold text-xl pb-4"><%= product.name %></h4>
-                <h4 class="absolute block bg-white bottom-5 left-5 z-10 rounded-full text-green-500 font-bold py-2 px-3 w-max"><%= priceForm(product.price) %></h4>                 
-                <a class="absolute inline-block bottom-5 z-10 right-5 ml-auto bg-blue-500 rounded-full text-white font-bold py-2 px-3 w-max" href="/product/<%= product.id %> ">Detail</a>
-              </div>
-            </div>
+      <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
+        <div class="product-card <%= product.category.toLowerCase() %> flex-shrink-0 m-6 relative overflow-hidden rounded-lg max-w-xs shadow-lg bg-local bg-cover h-96 bg-center hover:shadow-2xl hover:scale-105 transition-all transform duration-500 static shadow-xl w-96" style="background-image: url(<%= img[0] %>)">
+          <div class="static text-white px-6 pb-6 mt-6">
+            <% if (product.bestProduct == 'Y') { %>
+            <span class="ribbon">SPESIAL</span>
+            <% } %>
+            <h4 class="absolute block bottom-14 z-10 font-semibold text-xl pb-4"><%= product.name %></h4>
+            <h4 class="absolute block bg-white bottom-5 left-5 z-10 rounded-full text-green-500 font-bold py-2 px-3 w-max"><%= priceForm(product.price) %></h4>
+            <a class="absolute inline-block bottom-5 z-10 right-5 ml-auto bg-blue-500 rounded-full text-white font-bold py-2 px-3 w-max" href="/product/<%= product.id %> ">Detail</a>
           </div>
-        <% }) %>
+        </div>
       </div>
+      <% }) %>
+    </div>
   </div>
 </div>
-    <!-- akhir semua produk -->
+<!-- akhir semua produk -->
 
-  <!-- product end -->
+<!-- product end -->
 
 <!-- kontak -->
-<div class="flex justify-center w-11/12" id="contact">
-  <div class="row justify-content-center">
+<div class="flex justify-center w-11/12 mx-auto" id="contact">
+  <div class="row justify-content-center w-full">
     <!-- email form -->
     <div class="min-h-screen py-6 flex flex-col justify-center sm:py-12 my-5 mx-auto">
-      <div class="relative py-3 sm:max-w-xl sm:mx-auto">
-        <div
-          class="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
+      <div class="relative py-3 sm:max-w-max sm:mx-auto">
+        <div class="absolute inset-0 bg-gradient-to-r from-purple-300 to-purple-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
         </div>
         <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-10">
           <div class="max-w-md mx-auto">
@@ -165,7 +164,7 @@
               <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                 <form method="post" action="/sendmail">
                   <div class="relative h-16">
-                    <input id="subject" name="subject" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Subject"/>
+                    <input id="subject" name="subject" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Subject" />
                     <label for="subject" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Subject</label>
                   </div>
                   <div class="relative h-16">
@@ -182,7 +181,7 @@
                   </div>
                   <div class="relative">
                     <button type="submit" class="bg-blue-500 text-white rounded-md px-2 py-1">Kirim</button>
-                  </div>                  
+                  </div>
                 </form>
               </div>
             </div>
@@ -196,63 +195,63 @@
 
 <!-- Whatsapp -->
 <% if (!locals.isLoggedIn) { %>
-  <div class="whatsapp-logo shadow">
-    <a href="https://api.whatsapp.com/send?phone=6289632943033&text=Halo%20admin%20Little-f" class="text-decoration-none d-block" target="_blank"><em class="bi bi-whatsapp"></em></a>
-  </div>  
+<div class="whatsapp-logo shadow">
+  <a href="https://api.whatsapp.com/send?phone=6289632943033&text=Halo%20admin%20Little-f" class="text-decoration-none d-block" target="_blank"><em class="bi bi-whatsapp"></em></a>
+</div>
 <% } %>
 <!-- Whatsapp end -->
 <!-- kontak end -->
-    <% if (locals.isLoggedIn) { %>
-     <div class="logout">
-      <a href="/add" class="text-decoration-none d-block bg-success rounded-pill ps-2 pe-2 shadow">+ Produk</a>
-      <a href="/logout" class="text-decoration-none d-block bg-danger mt-2 rounded-pill ps-2 pe-2 shadow">Logout</a>
-     </div>
-    <% } %>
+<% if (locals.isLoggedIn) { %>
+<div class="logout">
+  <a href="/add" class="text-decoration-none d-block bg-success rounded-pill ps-2 pe-2 shadow">+ Produk</a>
+  <a href="/logout" class="text-decoration-none d-block bg-danger mt-2 rounded-pill ps-2 pe-2 shadow">Logout</a>
+</div>
+<% } %>
 
-    <script>
-      // Show filtered elements
-      const addClass = (element, name) => {
-        const arr1 = element.className.split(" ");
-        const arr2 = name.split(" ");
-        for (let i = 0; i < arr2.length; i++) {
-          if (arr1.indexOf(arr2[i]) == -1) {
-            element.className += " " + arr2[i];
-          }
-        }
+<script>
+  // Show filtered elements
+  const addClass = (element, name) => {
+    const arr1 = element.className.split(" ");
+    const arr2 = name.split(" ");
+    for (let i = 0; i < arr2.length; i++) {
+      if (arr1.indexOf(arr2[i]) == -1) {
+        element.className += " " + arr2[i];
       }
+    }
+  }
 
-      // Hide elements that are not selected
-      const removeClass = (element, name) => {
-        const arr1 = element.className.split(" ");
-        const arr2 = name.split(" ");
-        for (let i = 0; i < arr2.length; i++) {
-          while (arr1.indexOf(arr2[i]) > -1) {
-            arr1.splice(arr1.indexOf(arr2[i]), 1);
-          }
-        }
-        element.className = arr1.join(" ");
+  // Hide elements that are not selected
+  const removeClass = (element, name) => {
+    const arr1 = element.className.split(" ");
+    const arr2 = name.split(" ");
+    for (let i = 0; i < arr2.length; i++) {
+      while (arr1.indexOf(arr2[i]) > -1) {
+        arr1.splice(arr1.indexOf(arr2[i]), 1);
       }
+    }
+    element.className = arr1.join(" ");
+  }
 
-      const filterSelection = c => {
-        const x = document.getElementsByClassName("product-card");
-        if (c == "all") c = "";
-        // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
-        for (let i = 0; i < x.length; i++) {
-          removeClass(x[i], "show");
-          if (x[i].className.indexOf(c) > -1) addClass(x[i], "show");
-        }
-      }
-      filterSelection("all")
+  const filterSelection = c => {
+    const x = document.getElementsByClassName("product-card");
+    if (c == "all") c = "";
+    // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+    for (let i = 0; i < x.length; i++) {
+      removeClass(x[i], "show");
+      if (x[i].className.indexOf(c) > -1) addClass(x[i], "show");
+    }
+  }
+  filterSelection("all")
 
 
-      // Add active class to the current control button (highlight it)
-      const btnContainer = document.getElementById("myBtnContainer");
-      const btns = btnContainer.getElementsByClassName("btn");
-      for ( i = 0; i < btns.length; i++) {
-        btns[i].addEventListener("click", () => {
-          var current = document.getElementsByClassName("active");
-          current[0].className = current[0].className.replace(" active", "");
-          this.className += " active";
-        });
-      }
-    </script>
+  // Add active class to the current control button (highlight it)
+  const btnContainer = document.getElementById("myBtnContainer");
+  const btns = btnContainer.getElementsByClassName("btn");
+  for (i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", () => {
+      var current = document.getElementsByClassName("active");
+      current[0].className = current[0].className.replace(" active", "");
+      this.className += " active";
+    });
+  }
+</script>

@@ -6,11 +6,12 @@ const {sendMail, sendMailConfirm} = require('./send_email');
 
 exports.home = (req, res) => {
   con.query( 'SELECT * FROM products; SELECT * FROM owner',
-      (err, results) => {
+      (err, data) => {
         res.render('home', {
-          db: results,
+          data,
           layout: 'main-layout',
           tittle: 'Little-f',
+          meta: data[0],
         });
       },
   );
@@ -208,11 +209,10 @@ exports.productPage = (req, res) => {
       (err, db) => {
         res.render('product-page', {
           layout: 'main-layout',
-          tittle: 'Halaman produk | Little-f',
+          tittle: db[0].name,
           product: db[0],
+          meta: db,
         });
       },
   );
 };
-
-// 139.162.63.175
