@@ -1,12 +1,18 @@
+<% 
+  const keywords = [];
+  meta.forEach(e => {
+    keywords.push('jual ' + e.name)
+  });
+%> 
+
+
 <!doctype html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="Little-f adalah situs yang menjual barang-barang bekas berkualitas yang berlokasi di Jatinangor Sumedang, kami menjual berbagai barang dari mulai buku, pakaian, dan lainnya. Transaksi bisa dilakukan melalui shopee, tokopedia, atau COD">
-  <% meta.forEach(e => { %>
-   <meta name="description" content="<%= e.name %>">
-  <% }) %>
+  <meta name="description" content="Little-f adalah situs yang menjual barang-barang bekas berkualitas yang berlokasi di Jatinangor Sumedang, kami menjual berbagai barang dari mulai buku, pakaian, dan lainnya. Transaksi bisa dilakukan melalui shopee, tokopedia, atau COD">  
+  <meta name="keywords" content="<%= keywords.toString() %>">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet preconnect" href="https://unpkg.com/aos@next/dist/aos.css" />
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
@@ -20,7 +26,7 @@
 
 <body id="home">
   <!-- navbar start-->
-  <div class="navbar w-full text-white">
+  <div class="bg-ungu w-full text-white">
     <div x-data="{ open: false }" class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
       <div class="p-4 flex flex-row items-center justify-between">
         <a href="/" class="text-lg font-bold tracking-widest dark-mode:text-white">Little-f</a>

@@ -4,14 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "build:css": "postcss ./public/css/tailwind.css -o ./tailwind.css",
+    "watch": "watch 'npm run build:css' ./views"
   },
   "keywords": [],
   "author": "kausaprima",
   "license": "ISC",
   "dependencies": {
+    "@fullhuman/postcss-purgecss": "^4.0.3",
+    "autoprefixer": "^10.3.4",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "cssnano": "^5.0.8",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.1",
@@ -20,7 +25,8 @@
     "mysql": "^2.18.1",
     "nanoid": "^3.1.23",
     "nodemailer": "^6.6.3",
-    "tailwindcss": "^2.2.8"
+    "tailwindcss": "^2.2.8",
+    "watch": "^1.0.2"
   },
   "devDependencies": {
     "eslint": "^7.27.0",

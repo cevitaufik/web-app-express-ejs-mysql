@@ -1,22 +1,12 @@
 module.exports = {
-  purge: [
-    './views/*.html',
-    './views/*.ejs',
-  ],
+  purge: [],
   darkMode: false, // or 'media' or 'class'
-  theme: {
-    extend: {},
-  },
+  theme: {},
   variants: {
     extend: {},
   },
   plugins: [],
 };
 
-// eslint-disable-next-line max-len
-// npx tailwindcss -i ./public/css/tailwind.css -o ./public/css/tailwind.prod.css
-
-// eslint-disable-next-line max-len
-// SET NODE_ENV=production npx tailwindcss -i ./public/css/tailwind.css -o ./public/css/tailwind.prod.css --minify
-
-// npx tailwindcss -o ./public/css/tailwind.css --watch
+// npm run build:css
+// https://flaviocopes.com/tailwind-setup/
