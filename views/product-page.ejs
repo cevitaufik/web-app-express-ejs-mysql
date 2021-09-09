@@ -17,7 +17,7 @@
       <div class="pt-5 md:py-10">
         <div class="relative w-full h-screen">
           <div class="absolute foto-1">
-            <img src="/<%= img[0] %>" alt="<%= product.name %>" class="w-full">
+            <img src="/<%= img[0] %>" alt="<%= product.name %>" class="w-full h-full">
             <div class="absolute grid grid-cols-2 gap-0 top-0 h-full w-full">
               <div class="place-self-center w-full">
                 <div class="bg-white h-10 ml-2 rounded-full grid w-10">
@@ -87,17 +87,14 @@
           </div>
         </div>
       </div>
-    </div>
-
-
-    <div class="py-2 md:py-10">
-      <h1 class="text-lg md:text-4xl font-bold text-green-500 pb-3"><%= priceForm(product.price) %></h1>
-      <% for( let i = 0; i < desc.length; i++ ) { %>
-      <h3 class="font-semibold"><%= desc[i] %></h3>
-      <% } %>
+      <div class="py-2 md:py-10">
+        <h1 class="text-lg md:text-4xl font-bold text-green-500 pb-3"><%= priceForm(product.price) %></h1>
+        <% for( let i = 0; i < desc.length; i++ ) { %>
+        <h3 class="font-semibold"><%= desc[i] %></h3>
+        <% } %>
+      </div>
     </div>
   </div>
-</div>
 </div>
 
 <script>

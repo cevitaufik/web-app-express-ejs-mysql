@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/littlefx/littlef-node/
+    - export DEPLOYPATH=/home/littlefx/public_html/node
     - /bin/cp -R public $DEPLOYPATH
     - /bin/cp -R util $DEPLOYPATH
     - /bin/cp -R views $DEPLOYPATH
