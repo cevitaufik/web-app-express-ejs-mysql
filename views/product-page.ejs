@@ -14,53 +14,136 @@
     <h1 class="text-2xl font-bold border-b-2 border-gray-300"><%= product.name %> </h1>
     <div class="grid grid-cols-1 md:grid-cols-2 md:gap-4">
 
-      <div class="carousel relative rounded relative overflow-hidden py-2 md:py-10">
-        <div class="carousel-inner relative overflow-hidden w-full h-max">
-          <!--Slide 1-->
-          <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
-          <img src="/<%= img[0] %>" alt="<%= product.name %>" class="carousel-item absolute">
-          <label for="carousel-3" class="control-1 w-6 md:w-10 h-6 md:h-10 ml-1 md:ml-5 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto flex justify-center">
-            <em class="bi bi-chevron-left leading-6 md:leading-10"></em></label>
-          <label for="carousel-2" class="next control-1 w-6 md:w-10 h-6 md:h-10 mr-1 md:mr-5 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto flex justify-center">
-            <em class="bi bi-chevron-right leading-6 md:leading-10"></em></label>
-
-          <!--Slide 2-->
-          <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
-          <img src="/<%= img[1] %>" alt="<%= product.name %>" class="carousel-item absolute">
-          <label for="carousel-1" class="control-2 w-10 h-10 ml-1 md:ml-5 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">
-            <em class="bi bi-chevron-left leading-10"></em></label>
-          <label for="carousel-3" class="next control-2 w-10 h-10 mr-1 md:mr-5 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">
-            <em class="bi bi-chevron-right leading-10"></em></label>
-
-          <!--Slide 3-->
-          <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
-          <img src="/<%= img[2] %>" alt="<%= product.name %>" class="carousel-item absolute">
-          <label for="carousel-2" class="control-3 w-10 h-10 ml-1 md:ml-5 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">
-            <em class="bi bi-chevron-left leading-10"></em></label>
-          <label for="carousel-1" class="next control-3 w-10 h-10 mr-1 md:mr-5 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">
-            <em class="bi bi-chevron-right leading-10"></em></label>
-
-          <!-- Add additional indicators for each slide-->
-          <ol class="carousel-indicators">
-            <li class="inline-block mr-3">
-              <label for="carousel-1" class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
-            </li>
-            <li class="inline-block mr-3">
-              <label for="carousel-2" class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
-            </li>
-            <li class="inline-block mr-3">
-              <label for="carousel-3" class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
-            </li>
-          </ol>
-
+      <div class="pt-5 md:py-10">
+        <div class="relative w-full h-screen">
+          <div class="absolute foto-1">
+            <img src="/<%= img[0] %>" alt="<%= product.name %>" class="w-full">
+            <div class="absolute grid grid-cols-2 gap-0 top-0 h-full w-full">
+              <div class="place-self-center w-full">
+                <div class="bg-white h-10 ml-2 rounded-full grid w-10">
+                  <div class="block absolute place-self-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="place-self-center w-full">
+                <div class="bg-white h-10 ml-auto mr-2 rounded-full grid w-10">
+                  <div class="block absolute place-self-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="absolute foto-2">
+            <img src="/<%= img[1] %>" alt="<%= product.name %>" class="w-full">
+            <div class="absolute grid grid-cols-2 gap-0 top-0 h-full w-full">
+              <div class="place-self-center w-full">
+                <div class="bg-white h-10 ml-2 rounded-full grid w-10">
+                  <div class="block absolute place-self-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="place-self-center w-full">
+                <div class="bg-white h-10 ml-auto mr-2 rounded-full grid w-10">
+                  <div class="block absolute place-self-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="absolute foto-3">
+            <img src="/<%= img[2] %>" alt="<%= product.name %>" class="w-full">
+            <div class="absolute grid grid-cols-2 gap-0 top-0 h-full w-full">
+              <div class="place-self-center w-full">
+                <div class="bg-white h-10 ml-2 rounded-full grid w-10">
+                  <div class="block absolute place-self-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="place-self-center w-full">
+                <div class="bg-white h-10 ml-auto mr-2 rounded-full grid w-10">
+                  <div class="block absolute place-self-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="py-2 md:py-10">
-        <h1 class="text-lg md:text-4xl font-bold text-green-500 pb-3"><%= priceForm(product.price) %></h1>
-        <% for( let i = 0; i < desc.length; i++ ) { %>
-          <h3 class="font-semibold"><%= desc[i] %></h3>
-        <% } %>
-      </div>
+    </div>
+
+
+    <div class="py-2 md:py-10">
+      <h1 class="text-lg md:text-4xl font-bold text-green-500 pb-3"><%= priceForm(product.price) %></h1>
+      <% for( let i = 0; i < desc.length; i++ ) { %>
+      <h3 class="font-semibold"><%= desc[i] %></h3>
+      <% } %>
     </div>
   </div>
 </div>
+</div>
+
+<script>
+  // Show filtered elements
+  const addClass = (element, name) => {
+    const arr1 = element.className.split(" ");
+    const arr2 = name.split(" ");
+    for (let i = 0; i < arr2.length; i++) {
+      if (arr1.indexOf(arr2[i]) == -1) {
+        element.className += " " + arr2[i];
+      }
+    }
+  }
+
+  // Hide elements that are not selected
+  const removeClass = (element, name) => {
+    const arr1 = element.className.split(" ");
+    const arr2 = name.split(" ");
+    for (let i = 0; i < arr2.length; i++) {
+      while (arr1.indexOf(arr2[i]) > -1) {
+        arr1.splice(arr1.indexOf(arr2[i]), 1);
+      }
+    }
+    element.className = arr1.join(" ");
+  }
+
+  const filterSelection = c => {
+    const x = document.getElementsByClassName("product-card");
+    if (c == "all") c = "";
+    // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+    for (let i = 0; i < x.length; i++) {
+      removeClass(x[i], "show");
+      if (x[i].className.indexOf(c) > -1) addClass(x[i], "show");
+    }
+  }
+  filterSelection("all")
+
+
+  // Add active class to the current control button (highlight it)
+  const btnContainer = document.getElementById("myBtnContainer");
+  const btns = btnContainer.getElementsByClassName("btn");
+  for (i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", () => {
+      var current = document.getElementsByClassName("active");
+      current[0].className = current[0].className.replace(" active", "");
+      this.className += " active";
+    });
+  }
+</script>

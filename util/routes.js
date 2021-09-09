@@ -21,6 +21,7 @@ exports.login = (req, res) => {
   res.render('login', {
     layout: 'main-layout',
     tittle: 'Login | Little-f',
+    meta: '',
   });
 };
 
@@ -55,6 +56,7 @@ exports.add = (req, res) => {
   res.render('add', {
     layout: 'main-layout',
     tittle: 'Tambah produk | Little-f',
+    meta: '',
   });
   productCode.push(nanoid(5));
 };
