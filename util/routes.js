@@ -22,6 +22,7 @@ exports.login = (req, res) => {
     layout: 'main-layout',
     tittle: 'Login | Little-f',
     meta: '',
+    msg: '',
   });
 };
 
@@ -36,10 +37,20 @@ exports.auth = (req, res) => {
             req.session.username = results[0].username;
             res.redirect('/');
           } else {
-            res.redirect('/login');
+            res.render('login', {
+              layout: 'main-layout',
+              tittle: 'Login | Little-f',
+              meta: '',
+              msg: 'Sandi yang anda masukan salah',
+            });
           }
         } else {
-          res.redirect('/login');
+          res.render('login', {
+            layout: 'main-layout',
+            tittle: 'Login | Little-f',
+            meta: '',
+            msg: 'Email yang anda masukan salah',
+          });
         }
       },
   );

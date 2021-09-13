@@ -45,7 +45,7 @@
   padding: 2.5rem;
 }
 
-.logout {
+.logou {
   line-height: 30px;
   text-align: center;
   float: right;
@@ -106,8 +106,18 @@ li:hover > button svg { transform: rotate(-270deg) }
   height: 700px;
 }
 
+.bg-ungu-navbar {
+  background-color: #AA00D4;
+}
+
 .bg-ungu {
   background-color: #AA00D4;
+  color: white;
+}
+
+.bg-ungu:hover {
+  background-color: white;
+  color: #AA00D4;
 }
 
 .bg-ungu-gradient {

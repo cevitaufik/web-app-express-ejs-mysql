@@ -83,14 +83,14 @@
             <div class="static text-white px-6 pb-6 mt-6">
               <div class="absolute top-5 left-5 text-yellow-500 bg-white rounded-full p-1.5">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-star-fill w-5" viewBox="0 0 16 16">
-                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                 </svg>
               </div>
               <h4 class="absolute block bottom-14 z-10 font-semibold text-xl pb-4"><%= product.name %></h4>
               <h4 class="absolute block bg-white bottom-5 left-5 z-10 rounded-full text-green-500 font-bold py-2 px-3 w-max"><%= priceForm(product.price) %></h4>
-              <a class="absolute inline-block bottom-5 h-10 z-10 right-5 ml-auto bg-ungu rounded-full text-white font-bold py-2 px-3 w-max hover-text-ungu hover:bg-white" href="/product/<%= product.id %> ">
+              <a class="absolute inline-block bottom-5 h-10 z-10 right-5 ml-auto bg-ungu rounded-full text-white font-bold py-2 px-3 w-ma" href="/product/<%= product.id %> ">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search inline-block" viewBox="0 0 16 16">
-                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                 </svg>
               </a>
             </div>
@@ -105,7 +105,7 @@
   <%- include('about.html') %>
 
   <!-- semua produk -->
-  <div class="shadow-xl bg-gray-100 my-5 w-11/12 mx-auto rounded-lg" id="allProducts">
+  <div class="shadow-xl my-5 w-11/12 mx-auto rounded-lg" id="allProducts">
 
     <!-- filter product -->
     <div class="flex justify-center">
@@ -141,15 +141,15 @@
             <% if (product.bestProduct == 'Y') { %>
             <div class="absolute top-5 left-5 text-yellow-500 bg-white rounded-full p-1.5">
               <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-star-fill w-5" viewBox="0 0 16 16">
-                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
               </svg>
             </div>
             <% } %>
             <h4 class="absolute block bottom-14 z-10 font-semibold text-xl pb-4"><%= product.name %></h4>
             <h4 class="absolute block bg-white bottom-5 left-5 z-10 rounded-full text-green-500 font-bold py-2 px-3 w-max"><%= priceForm(product.price) %></h4>
-            <a class="absolute inline-block bottom-5 h-10 z-10 right-5 ml-auto bg-ungu rounded-full text-white font-bold py-2 px-3 w-max" href="/product/<%= product.id %> ">
+            <a class="absolute inline-block bottom-5 h-10 z-10 right-5 ml-auto bg-ungu rounded-full font-bold py-2 px-3 w-max" href="/product/<%= product.id %> ">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search inline-block" viewBox="0 0 16 16">
-                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
               </svg>
             </a>
           </div>
@@ -214,16 +214,16 @@
 <div class="whatsapp-logo shadow leading-tight w-11 text-center hover:scale-105 transition-all transform duration-500" data-aos="zoom-in" data-aos-once="true">
   <a href="https://api.whatsapp.com/send?phone=6289632943033&text=Halo%20admin%20Little-f" class="text-decoration-none d-block leading-tight" target="_blank">
     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
-    <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
-  </svg></a>
+      <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" />
+    </svg></a>
 </div>
 <% } %>
 <!-- Whatsapp end -->
 <!-- kontak end -->
 <% if (locals.isLoggedIn) { %>
-<div class="logout">
-  <a href="/add" class="text-decoration-none d-block bg-success rounded-pill ps-2 pe-2 shadow">+ Produk</a>
-  <a href="/logout" class="text-decoration-none d-block bg-danger mt-2 rounded-pill ps-2 pe-2 shadow">Logout</a>
+<div class="float-right fixed bottom-5 right-5">
+  <a href="/add" class="bg-purple-500 text-white hover:bg-white hover:text-purple-500 font-bold py-2 px-3 rounded-full">+ Produk</a>
+  <a href="/logout" class="bg-pink-500 text-white hover:bg-white hover:text-pink-500 font-bold py-2 px-3 rounded-full">Logout</a>
 </div>
 <% } %>
 
