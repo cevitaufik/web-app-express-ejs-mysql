@@ -1,84 +1,97 @@
-<div class="container-md pt-5">
-  <% if (locals.isLoggedIn) { %>
-  <h4 class="text-center mb-4">Tambahkan produk baru</h4>
-  <form action="/add" method="POST" enctype="multipart/form-data">
-    <div class="row mb-3">
-      <label for="name" class="col-sm-3 col-form-label">Nama barang</label>
-      <div class="col-sm-9">
-        <input type="text" class="form-control" id="name" name="name" required>
-      </div>
-    </div>
-    <div class="row mb-3">
-      <label for="price" class="col-sm-3 col-form-label">Harga</label>
-      <div class="col-sm-9">
-        <input type="text" class="form-control" id="price" name="price" required>
-      </div>
-    </div>
-    <div class="row mb-3">
-      <label for="category" class="col-sm-3 col-form-label">Kategori</label>
-      <div class="col-sm-9">
-        <input type="text" class="form-control" id="category" name="category" required>
-      </div>
-    </div>
-    <div class="row mb-3">
-      <label for="description" class="col-sm-3 col-form-label">Deskripsi</label>
-      <div class="col-sm-9">
-        <input type="text" class="form-control" id="description" name="description" required>
-      </div>
-    </div>
-    <div class="row mb-3">
-      <label for="shopee" class="col-sm-3 col-form-label">Shopee</label>
-      <div class="col-sm-9">
-        <input type="text" class="form-control" id="shopee" name="shopee">
-      </div>
-    </div>
-    <div class="row mb-3">
-      <label for="tokopedia" class="col-sm-3 col-form-label">Tokopedia</label>
-      <div class="col-sm-9">
-        <input type="text" class="form-control" id="tokopedia" name="tokopedia">
-      </div>
-    </div>
-    <div class="row mb-3">
-      <label for="produkUnggulan" class="col-sm-3 col-form-label">Produk unggulan</label>
-      <div class="col-sm-3">
-        <input class="form-check-input" type="radio" id="bestProduct" value="Y" name="bestProduct">
-        <label class="form-check-label" for="Y">
-          Ya
+<div class="grid justify-items-center py-10">
+  <div class="w-3/4 md:w-2/4 lg:w-2/5 bg-purple-300 shadow-md rounded-lg pt-8">
+    <p class="text-center text-2xl font-bold">Tambahkan produk baru</p>
+    <% if (locals.isLoggedIn) { %>
+    <form class="w-3/4 mx-auto pt-6 pb-8 mb-4" action="/add" method="POST" enctype="multipart/form-data">
+
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+          Nama barang
         </label>
-        <div class="ms-5 d-inline-block">
-          <input class="form-check-input" type="radio" id="bestProduct" value="N" checked name="bestProduct">
-          <label class="form-check-label" for="N">
-            Tidak
-          </label>
-        </div>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="Nama barang" name="name" required>
       </div>
-    </div>
-    <div class="row mb-3">
-      <label for="foto1" class="col-sm-3 col-form-label">Foto cover</label>
-      <div class="col-sm-9">
-        <input type="file" class="form-control" id="foto1" name="foto1">
+
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="price">
+          Harga
+        </label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="price" type="text" placeholder="Harga" name="price" required>
       </div>
-    </div>
-    <div class="row mb-3">
-      <label for="foto2" class="col-sm-3 col-form-label">Foto ke 2</label>
-      <div class="col-sm-9">
-        <input type="file" class="form-control" id="foto1" name="foto2">
+
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="category">
+          Kategori
+        </label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="category" type="text" placeholder="Kategori" name="category" required>
       </div>
-    </div>
-    <div class="row mb-3">
-      <label for="foto3" class="col-sm-3 col-form-label">Foto ke 3</label>
-      <div class="col-sm-9">
-        <input type="file" class="form-control" id="foto1" name="foto3">
+
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
+          Deskripsi
+        </label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="description" type="text" placeholder="Deskripsi (pisahkan dengan koma)" name="description" required>
       </div>
-    </div>
-    <div class="d-grid gap-2 col-6 mx-auto">
-      <button type="submit" class="btn btn-primary">Simpan</button>
-    </div>
-  </form>
-  <div class="logout">
-    <a href="/logout" class="text-decoration-none d-block bg-danger mt-2 rounded-pill ps-2 pe-2 shadow">Logout</a>
+
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="shopee">
+          Shopee
+        </label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="shopee" type="text" placeholder="Link Shopee" name="shopee">
+      </div>
+
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="tokopedia">
+          Tokopedia
+        </label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="tokopedia" type="text" placeholder="Link Tokopedia" name="tokopedia">
+      </div>
+
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="bestProduct">
+          Unggulan
+        </label>
+        <input type="radio" value="Y" name="bestProduct">
+        <label for="Y" class="mr-5">Ya</label>
+        <input class="" type="radio" value="N" name="bestProduct" checked>
+        <label for="N">Tidak</label>
+      </div>
+
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="foto1">
+          Foto cover
+        </label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="foto1" type="file" name="foto1">
+      </div>
+
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="foto2">
+          Foto ke 2
+        </label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="foto2" type="file" name="foto2">
+      </div>
+
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="foto3">
+          Foto ke 3
+        </label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="foto3" type="file" name="foto3">
+      </div>
+
+
+      <div class="flex justify-end">
+        <button class="bg-ungu block hover-text-ungu text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline" type="submit">
+          Simpan
+        </button>        
+      </div>
+    </form>
+    <% } else { %>
+    <h1 class="text-center text-2xl font-bold my-10">Silahkan login terlebih dahulu</h1>
+    <% } %>  
   </div>
-  <% } else { %>
-  <h1 class="text-center mt-5 pt-5 mb-5 pb-5">Silahkan login terlebih dahulu</h1>
-  <% } %>
 </div>
+
+<% if (locals.isLoggedIn) { %>
+  <div class="float-right fixed bottom-5 right-5">
+    <a href="/logout" class="bg-pink-500 text-white hover:bg-white hover:text-pink-500 font-bold py-2 px-3 rounded-full">Logout</a>
+  </div>
+<% } %>
