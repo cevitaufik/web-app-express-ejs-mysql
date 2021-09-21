@@ -161,7 +161,8 @@ exports.update = (req, res) => {
         res.render('update', {
           layout: 'main-layout',
           tittle: 'Perbaharui produk | Little-f',
-          product,
+          meta: '',
+          product: product[0],
         });
       });
 };
