@@ -111,17 +111,17 @@
     <div class="flex justify-center">
       <div class="group z-20 relative mt-5 flex justify-center">
         <button class="outline-none focus:outline-none border px-3 py-1 bg-ungu flex items-center w-40 md:w-96 rounded-full">
-          <span class="pr-1 font-semibold text-white flex-1">Filter Produk</span>
+          <span class="pr-1 font-semibold bg-ungu text-white flex-1">Filter Produk</span>
           <span>
             <svg class="fill-current h-4 w-4 transform group-hover:-rotate-180 transition duration-150 ease-in-out text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
               <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
             </svg>
           </span>
         </button>
-        <div class="bg-ungu border absolute rounded-lg transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top block w-11/12 mt-9">
-          <button class="block px-3 py-1 hover:bg-gray-100 w-full text-white font-semibold hover-text-ungu" onclick="filterSelection('all')">Semua Produk</button>
+        <div class="border absolute rounded-3xl transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top block w-11/12 mt-9">
+          <button class="block px-3 py-1 hover:bg-gray-100 w-full bg-ungu text-white font-semibold hover-text-ungu" onclick="filterSelection('all')">Semua Produk</button>
           <% category.forEach(e => { %>
-          <button class="block px-3 py-1 hover:bg-gray-100 w-full text-white font-semibold hover-text-ungu" onclick="filterSelection('<%= e.toLowerCase() %>')"><%= e %></button>
+          <button class="block px-3 py-1 hover:bg-gray-100 w-full bg-ungu text-white font-semibold hover-text-ungu" onclick="filterSelection('<%= e.toLowerCase() %>')"><%= e %></button>
           <% }) %>
         </div>
       </div>
