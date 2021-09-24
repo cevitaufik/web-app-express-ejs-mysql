@@ -130,6 +130,10 @@ li:hover > button svg { transform: rotate(-270deg) }
   background-image: linear-gradient(45deg, #f7b6ee 0%, #ffe986 100%);
 }
 
+.text-ungu {
+  color: #AA00D4;
+}
+
 .hover-text-ungu:hover {
   color: #AA00D4;
 }

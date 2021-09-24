@@ -5,7 +5,7 @@ const path = require('path');
 const {sendMail, sendMailConfirm} = require('./send_email');
 
 exports.home = (req, res) => {
-  con.query( 'SELECT * FROM products; SELECT * FROM owner',
+  con.query( 'SELECT * FROM products ORDER BY id DESC; SELECT * FROM owner',
       (err, data) => {
         res.render('home', {
           data,
