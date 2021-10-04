@@ -2,7 +2,7 @@
   <div class="w-3/4 md:w-2/4 lg:w-2/5 bg-purple-300 shadow-md rounded-lg pt-8">
     <p class="text-center text-2xl font-bold">Tambahkan produk baru</p>
     <% if (locals.isLoggedIn) { %>
-    <form class="w-3/4 mx-auto pt-6 pb-8 mb-4" action="/add" method="POST" enctype="multipart/form-data">
+    <form class="w-3/4 mx-auto pt-6 pb-8 mb-4" action="/product/add" method="POST" enctype="multipart/form-data">
 
       <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="name">

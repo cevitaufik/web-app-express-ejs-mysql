@@ -140,7 +140,7 @@ exports.addNewProduct = (req, res) => {
         req.body.tokopedia,
       ],
       (err, results) => {
-        res.redirect('/add');
+        res.redirect('/product/add');
         if (err != 'null') {
           console.log('data berhasil disimpan');
           fileName.splice(0, 3);

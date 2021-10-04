@@ -44,15 +44,15 @@ app.use((req, res, next) => {
 });
 
 app.get('/', routes.home);
-app.get('/login', routes.login);
-app.post('/auth', routes.auth);
+app.get('/admin-login', routes.login);
+app.post('/admin-login', routes.auth);
 app.get('/logout', routes.logout);
-app.get('/add', routes.add);
-app.post('/add', routes.uploadMultiple, routes.addNewProduct);
-app.get('/update/:id', routes.update);
-app.post('/update', routes.updateById);
-app.post('/delete/:id', routes.deleteById);
-app.post('/sendmail', routes.sendMail);
+app.get('/product/add', routes.add);
+app.post('/product/add', routes.uploadMultiple, routes.addNewProduct);
+app.get('/product/update/:id', routes.update);
+app.post('/product/update', routes.updateById);
+app.post('/product/delete/:id', routes.deleteById);
+app.post('/email', routes.sendMail);
 app.get('/product/:id', routes.productPage);
 
 init();

@@ -6,7 +6,7 @@
       keywords.push('jual ' + e.name)
     });
   }
-%> 
+%>
 
 
 <!doctype html>
@@ -14,9 +14,11 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="Little-f adalah situs yang menjual barang-barang bekas berkualitas yang berlokasi di Jatinangor Sumedang, kami menjual berbagai barang dari mulai buku, pakaian, dan lainnya. Transaksi bisa dilakukan melalui shopee, tokopedia, atau COD">  
+  <meta name="description" content="Little-f adalah situs yang menjual barang-barang bekas berkualitas yang berlokasi di Jatinangor Sumedang, kami menjual berbagai barang dari mulai buku, pakaian, dan lainnya. Transaksi bisa dilakukan melalui shopee, tokopedia, atau COD">
   <meta name="keywords" content="<%= keywords.toString() %>">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#AA00D4">
+  <link rel="manifest" href="/manifest.json">
   <link rel="stylesheet preconnect" href="https://unpkg.com/aos@next/dist/aos.css" />
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
   <link rel="stylesheet" href="/css/tailwind.css">
@@ -98,11 +100,19 @@
         </div>
       </div>
       <div class="mx-auto text-center py-16 text-gray-400">
-        <a href="/login">Little-f 2021</a>
+        <a href="/admin-login">Little-f 2021</a>
       </div>
+    </div>
+    <!-- Install button, hidden by default -->
+    <div id="installContainer" class="hidden">
+      <button id="butInstall" type="button">
+        Install
+      </button>
     </div>
   </div>
   <!-- footer end -->
+
+  <script src="/pwa/script.js" defer></script>
 
   <script rel="preconnect" src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>

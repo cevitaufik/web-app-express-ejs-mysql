@@ -60,7 +60,7 @@
 
 
           <% if (locals.isLoggedIn) { %>
-          <a href="/update/<%= product.id %>" class="rounded-full font-bold text-white px-4 py-3 transition duration-300 ease-in-out bg-red-500 hover:text-red-500 hover:bg-white mr-6 mt-2">Perbaharui</a>
+          <a href="/product/update/<%= product.id %>" class="rounded-full font-bold text-white px-4 py-3 transition duration-300 ease-in-out bg-red-500 hover:text-red-500 hover:bg-white mr-6 mt-2">Perbaharui</a>
           <button onclick="openAlert()" class="rounded-full font-bold text-white px-4 py-3 transition duration-300 ease-in-out bg-red-500 hover:text-red-500 hover:bg-white mr-6 mt-2">Hapus</button>
 
           <div id="alert" class="hidden absolute w-full h-full bg-black top-0 left-0 flex-wrap content-center bg-opacity-75">
@@ -74,7 +74,7 @@
                     <h1 class="font-bold text-gray-800 text-lg inline-block py-2">Apakah anda yakin?</h1>
                     <div class="float-right">
                       <button onclick="openAlert()" class="rounded-full font-bold text-white px-4 py-2 transition duration-300 ease-in-out bg-gray-500 hover:text-gray-500 hover:bg-white mt-2 md:mt-0">Tutup</button>
-                      <form action="/delete/<%= product.id %>" method="post" class="inline-block">
+                      <form action="/product/delete/<%= product.id %>" method="post" class="inline-block">
                         <button type="submit" value="<%= product.id %>" class="rounded-full font-bold text-white px-4 py-2 transition duration-300 ease-in-out bg-red-500 hover:text-red-500 hover:bg-white mt-2 md:mt-0">Hapus</button>
                       </form>
                     </div>
