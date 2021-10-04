@@ -13,6 +13,7 @@
     },
     "rules": {
         "eol-last":"off",
-        "linebreak-style":"off"
+        "linebreak-style":"off",
+        "require-jsdoc":"off"
     }
 }
